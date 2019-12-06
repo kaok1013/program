@@ -39,18 +39,29 @@ window.onload = function() {
 
 //右クリックメニュー
 $(function() {
-  $(".demo1").contextMenu("rightmenu", {
-    bindings: {
-      edit: function(t) {
-        alert("編集します");
-      },
-      delete: function(t) {
-        alert("削除します");
+  $.contextMenu({
+    selector: ".context-menu-one",
+    callback: function(key, options) {
+      var m = "clicked: " + key;
+      (window.console && console.log(m)) || alert(m);
+    },
+    items: {
+      edit: { name: "条件編集", icon: "edit" },
+      delete: { name: "消去", icon: "delete" },
+      sep1: "---------",
+      quit: {
+        name: "キャンセル",
+        icon: function() {
+          return "context-menu-icon context-menu-icon-quit";
+        }
       }
     }
   });
-});
 
+  $(".context-menu-one").on("click", function(e) {
+    console.log("clicked", this);
+  });
+});
 //入力フォーム
 $(function() {
   $("#button").click(function() {
