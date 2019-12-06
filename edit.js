@@ -37,14 +37,13 @@ window.onload = function() {
 
   jQuery(".dragArea").disableSelection();
 };
-
 //右クリックメニュー
 $(function() {
+  var svgid;
   $.contextMenu({
     selector: ".context-menu-one",
-    callback: function(key, options) {
-      var m = "clicked: " + key;
-      (window.console && console.log(m)) || alert(m);
+    callback: function(key, opt) {
+      svgid = opt.$trigger.attr("id");
     },
     items: {
       edit: {
@@ -58,6 +57,8 @@ $(function() {
             heighth: 550,
             buttons: {
               確認: function() {
+                var conditions = document.forms.input_form.input1.value;
+                alert("[条件は]" + conditions + "[id]" + svgid);
                 //ここにデータベースを送るスクリプトを書くと思う
                 $(this).dialog("close");
               },
