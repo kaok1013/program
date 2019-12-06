@@ -1,3 +1,4 @@
+//ドラッグアンドソート
 window.onload = function() {
   let i = 0;
   jQuery(".sort-drop-area").sortable({
@@ -36,21 +37,36 @@ window.onload = function() {
   jQuery(".dragArea").disableSelection();
 };
 
-$(function(){
-  $("#button").click(function(){
+//右クリックメニュー
+$(function() {
+  $(".demo1").contextMenu("rightmenu", {
+    bindings: {
+      edit: function(t) {
+        alert("編集します");
+      },
+      delete: function(t) {
+        alert("削除します");
+      }
+    }
+  });
+});
+
+//入力フォーム
+$(function() {
+  $("#button").click(function() {
     $("#input_form").dialog({
-      modal:true, //モーダル
-      title:"入力フォーム(仮)",
-      width:550,
-      heighth:550,
-      buttons:{
-        "確認":function(){
+      modal: true, //モーダル
+      title: "入力フォーム(仮)",
+      width: 550,
+      heighth: 550,
+      buttons: {
+        確認: function() {
           //ここにデータベースを送るスクリプトを書くと思う
         },
-        "キャンセル":function(){
+        キャンセル: function() {
           $(this).dialog("close");
         }
       }
-    })
-  })
+    });
+  });
 });

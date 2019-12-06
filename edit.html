@@ -10,14 +10,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="edit.css" type="text/css" />
-    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+    <link
+      rel="stylesheet"
+      href="jQuery-contextMenu/dist/jquery.contextMenu.min.css"
+    />
     <title>らくらくC言語</title>
     <script src="jquery-3.4.1.js"></script>
     <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <scriot src="jQuery-contextMenu/dist/jquery.contextMenu.js"></scriot>
+    <script src="jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
     <script src="edit.js"></script>
   </head>
 
-  <body style="background-color:lightblue;" onContextmenu="return false;">
+  <body style="background-color:lightblue;" class="demo1">
     <main>
       <div class="side">
         <div class="sort-drop-area"></div>
@@ -226,24 +232,24 @@
         </svg>
       </div>
     </main>
-    
+
     <script>
       // ここにJavaScriptコードを書いていく
     </script>
-        <!-- 入力フォーム(仮) -->
-        <div id="input_form" style="display:none;">
-          <p>条件</p>
-            <input type="text" id="input1" size="50" maxlength="50">
-        </div>
-        <input type="button" id="button" value="ボタン4" />
+    <!-- 入力フォーム(仮) -->
+    <div id="input_form" style="display:none;">
+      <p>条件</p>
+      <input type="text" id="input1" size="50" maxlength="50" />
+    </div>
+    <input type="button" id="button" value="ボタン4" />
 
-        <!-- 右クリックのメニュー -->
-        <div id="righttmenu" class="rightmenu">
-            <ul>
-                <li>条件を編集</li>
-                <li>削除します</li>
-            </ul>
-        </div>
+    <!-- 右クリックのメニュー -->
+    <div id="righttmenu" class="contextMenu">
+      <ul>
+        <li id="edit">条件を編集</li>
+        <li id="delete">削除</li>
+      </ul>
+    </div>
   </body>
   <hooter>
     <p style="text-align: right">©Brute Force</p>
