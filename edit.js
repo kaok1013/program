@@ -59,6 +59,7 @@ $(function() {
             buttons: {
               確認: function() {
                 //ここにデータベースを送るスクリプトを書くと思う
+                $(this).dialog("close");
               },
               キャンセル: function() {
                 $(this).dialog("close");
