@@ -30,6 +30,7 @@ window.onload = function() {
       stop: function(event, ui) {
         ui.helper.attr("id", i + "_" + newItem);
         ui.helper.attr("name", "num_data");
+        ui.helper.addClass("context-menu-one");
         i++;
       }
     });
@@ -46,7 +47,26 @@ $(function() {
       (window.console && console.log(m)) || alert(m);
     },
     items: {
-      edit: { name: "条件編集", icon: "edit" },
+      edit: {
+        name: "条件編集",
+        icon: "edit",
+        callback: function() {
+          $("#input_form").dialog({
+            modal: true, //モーダル
+            title: "入力フォーム(仮)",
+            width: 550,
+            heighth: 550,
+            buttons: {
+              確認: function() {
+                //ここにデータベースを送るスクリプトを書くと思う
+              },
+              キャンセル: function() {
+                $(this).dialog("close");
+              }
+            }
+          });
+        }
+      },
       delete: { name: "消去", icon: "delete" },
       sep1: "---------",
       quit: {
@@ -60,24 +80,5 @@ $(function() {
 
   $(".context-menu-one").on("click", function(e) {
     console.log("clicked", this);
-  });
-});
-//入力フォーム
-$(function() {
-  $("#button").click(function() {
-    $("#input_form").dialog({
-      modal: true, //モーダル
-      title: "入力フォーム(仮)",
-      width: 550,
-      heighth: 550,
-      buttons: {
-        確認: function() {
-          //ここにデータベースを送るスクリプトを書くと思う
-        },
-        キャンセル: function() {
-          $(this).dialog("close");
-        }
-      }
-    });
   });
 });
