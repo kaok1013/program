@@ -1,13 +1,13 @@
 //ドラッグアンドソート
-window.onload = function() {
-  let i = 0;
+$(function (){
+  let i = 1;
   jQuery(".sort-drop-area").sortable({
     cursor: "move",
     opacity: 0.6,
     placeholder: "ui-state-highlight",
     revert: true
   });
-  jQuery(".sort-drop-area").bind("sortstop", function() {
+  jQuery(".sort-drop-area").on("sortstop", function() {
     // 番号を設定している要素に対しループ処理
     $(this)
       .find('[name="num_data"]')
@@ -16,7 +16,7 @@ window.onload = function() {
         var newid = str.substring(str.length - 1, str.length);
         // タグ内に通し番号を設定（idxは0始まりなので+1する）
         $(this).attr("id", idx + 1 + "_" + newid);
-      });
+    });
   });
   jQuery(".dragArea")
     .find("svg")
@@ -36,22 +36,20 @@ window.onload = function() {
     });
 
   jQuery(".dragArea").disableSelection();
-};
+});
 //右クリックメニュー
 $(function() {
-  var svgid;
   $.contextMenu({
     selector: ".context-menu-one",
-    callback: function(key, opt) {
-      svgid = opt.$trigger.attr("id");
-    },
     items: {
       edit: {
         name: "条件編集",
         icon: "edit",
         callback: function(key, opt) {
+          //条件編集のID取得
+          var svgid;
           svgid = opt.$trigger.attr("id");
-          console.log(svgid);
+          //条件入力フォーム
           $("#input_form").dialog({
             modal: true, //モーダル
             title: "入力フォーム(仮)",
@@ -71,7 +69,28 @@ $(function() {
           });
         }
       },
-      delete: { name: "消去", icon: "delete" },
+      //削除する
+      delete: { 
+        name: "消去", 
+        icon: "delete" ,
+        callback:function(key,opt){
+          //削除するID取得
+          if(confirm("本当に削除しますか？")){
+            deleteid = opt.$trigger.attr("id");
+            $('#'+deleteid).remove();
+            $(function() {
+              $(".sort-drop-area")
+                .find('[name="num_data"]')
+                .each(function(idx) {
+                  var str = $(this).attr("id");
+                  var newid = str.substring(str.length - 1, str.length);
+                  // タグ内に通し番号を設定（idxは0始まりなので+1する）
+                  $(this).attr("id", idx + 1 + "_" + newid);
+              });
+            });
+          }
+        }
+      },
       sep1: "---------",
       quit: {
         name: "キャンセル",
