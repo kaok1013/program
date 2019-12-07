@@ -99,3 +99,6 @@ main {
 .rightmenu li{
   cursor:pointer;
 }
+.delete_area{
+  width:15vh;
+}

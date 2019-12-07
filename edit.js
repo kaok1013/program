@@ -1,12 +1,14 @@
 //ドラッグアンドソート
 $(function (){
   let i = 1;
+  //ソートエリア
   jQuery(".sort-drop-area").sortable({
     cursor: "move",
     opacity: 0.6,
     placeholder: "ui-state-highlight",
     revert: true
   });
+  //順番idを取得　○_識別子←○の部分1~∞
   jQuery(".sort-drop-area").on("sortstop", function() {
     // 番号を設定している要素に対しループ処理
     $(this)
@@ -18,6 +20,7 @@ $(function (){
         $(this).attr("id", idx + 1 + "_" + newid);
     });
   });
+  //ドラックエリアフロウチャートのsvg
   jQuery(".dragArea")
     .find("svg")
     .draggable({
@@ -32,6 +35,15 @@ $(function (){
         ui.helper.attr("name", "num_data");
         ui.helper.addClass("context-menu-one");
         i++;
+      }
+    });
+
+    //ゴミ箱エリア
+    jQuery(".delete_area").droppable({
+      over:function(event,ui){
+        if(confirm("本当に削除しますか？")){
+          ui.draggable.remove();
+        }
       }
     });
 
