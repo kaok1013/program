@@ -49,7 +49,9 @@ $(function() {
       edit: {
         name: "条件編集",
         icon: "edit",
-        callback: function() {
+        callback: function(key, opt) {
+          svgid = opt.$trigger.attr("id");
+          console.log(svgid);
           $("#input_form").dialog({
             modal: true, //モーダル
             title: "入力フォーム(仮)",
