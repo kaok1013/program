@@ -106,8 +106,9 @@ $(function() {
       sep1: "---------",
       quit: {
         name: "キャンセル",
-        icon: function() {
-          return "context-menu-icon context-menu-icon-quit";
+        icon: "quit",
+        callback:function(){
+          return;
         }
       }
     }
