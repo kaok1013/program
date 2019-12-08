@@ -9,8 +9,9 @@ $(function() {
     placeholder: "ui-state-highlight",
     revert: true,
     //idを送る?
-    stop : function(ev, ui) {
-      console.log($(this).sortable("serialize"));
+    stop: function() {
+      var sortitem = $(".sort-drop-area").sortable("serialize");
+      $.post("sort_order.php", { postData: sortitem });
     }
   });
   //順番idを取得　○_識別子←○の部分1~∞
@@ -112,7 +113,7 @@ $(function() {
       quit: {
         name: "キャンセル",
         icon: "quit",
-        callback:function(){
+        callback: function() {
           return;
         }
       }
