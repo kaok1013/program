@@ -1,5 +1,6 @@
 //ドラッグアンドソート
-$(function (){
+$(function() {
+  let ifflag = false;
   let i = 1;
   //ソートエリア
   jQuery(".sort-drop-area").sortable({
@@ -18,7 +19,7 @@ $(function (){
         var newid = str.substring(str.length - 1, str.length);
         // タグ内に通し番号を設定（idxは0始まりなので+1する）
         $(this).attr("id", idx + 1 + "_" + newid);
-    });
+      });
   });
   //ドラックエリアフロウチャートのsvg
   jQuery(".dragArea")
@@ -27,6 +28,7 @@ $(function (){
       connectToSortable: ".sort-drop-area",
       helper: "clone",
       revert: "invalid",
+      containment: "body",
       start: function(event, ui) {
         newItem = $(this).attr("id");
       },
@@ -38,16 +40,14 @@ $(function (){
       }
     });
 
-    //ゴミ箱エリア
-    jQuery(".delete_area").droppable({
-      over:function(event,ui){
-        if(confirm("本当に削除しますか？")){
-          ui.draggable.remove();
-        }
+  //ゴミ箱エリア
+  jQuery(".delete_area").droppable({
+    over: function(event, ui) {
+      if (confirm("本当に削除しますか？")) {
+        ui.draggable.remove();
       }
-    });
-
-  jQuery(".dragArea").disableSelection();
+    }
+  });
 });
 //右クリックメニュー
 $(function() {
@@ -82,14 +82,14 @@ $(function() {
         }
       },
       //削除する
-      delete: { 
-        name: "消去", 
-        icon: "delete" ,
-        callback:function(key,opt){
+      delete: {
+        name: "消去",
+        icon: "delete",
+        callback: function(key, opt) {
           //削除するID取得
-          if(confirm("本当に削除しますか？")){
+          if (confirm("本当に削除しますか？")) {
             deleteid = opt.$trigger.attr("id");
-            $('#'+deleteid).remove();
+            $("#" + deleteid).remove();
             $(function() {
               $(".sort-drop-area")
                 .find('[name="num_data"]')
@@ -98,7 +98,7 @@ $(function() {
                   var newid = str.substring(str.length - 1, str.length);
                   // タグ内に通し番号を設定（idxは0始まりなので+1する）
                   $(this).attr("id", idx + 1 + "_" + newid);
-              });
+                });
             });
           }
         }
