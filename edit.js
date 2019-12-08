@@ -7,7 +7,11 @@ $(function() {
     cursor: "move",
     opacity: 0.6,
     placeholder: "ui-state-highlight",
-    revert: true
+    revert: true,
+    //idを送る?
+    stop : function(ev, ui) {
+      console.log($(this).sortable("serialize"));
+    }
   });
   //順番idを取得　○_識別子←○の部分1~∞
   jQuery(".sort-drop-area").on("sortstop", function() {
@@ -21,6 +25,7 @@ $(function() {
         $(this).attr("id", idx + 1 + "_" + newid);
       });
   });
+
   //ドラックエリアフロウチャートのsvg
   jQuery(".dragArea")
     .find("svg")
