@@ -11,7 +11,7 @@ $(function() {
     //idを送る?
     stop: function() {
       var sortitem = $(".sort-drop-area").sortable("serialize");
-      $.post("sort_order.php", { postData: sortitem });
+      console.log(sortitem);
     }
   });
   //順番idを取得　○_識別子←○の部分1~∞
