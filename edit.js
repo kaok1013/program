@@ -1,21 +1,19 @@
-//ドラッグアンドソート
+// ドラッグアンドソート
 $(function() {
-  let ifflag = false;
-  let i = 1;
-  //ソートエリア
-  jQuery(".sort-drop-area").sortable({
-    cursor: "move",
+  // ソートエリア
+  jQuery('.sort-drop-area').sortable({
+    cursor: 'move',
     opacity: 0.6,
-    placeholder: "ui-state-highlight",
+    placeholder: 'ui-state-highlight',
     revert: true,
-    //idを送る?
+    // idを送る?
     stop: function() {
-      var sortitem = $(".sort-drop-area").sortable("toArray");
+      const sortitem = $('.sort-drop-area').sortable('toArray');
       console.log(sortitem);
-    }
+    },
   });
-  //順番idを取得　○_識別子←○の部分1~∞
-  /*並び順いったん放置
+  // 順番idを取得 ○_識別子←○の部分1~∞
+  /* 並び順いったん放置
   jQuery(".sort-drop-area").on("sortstop", function() {
     // 番号を設定している要素に対しループ処理
     $(this)
@@ -29,76 +27,76 @@ $(function() {
   });
 */
 
-  //ドラックエリアフロウチャートのsvg
-  jQuery(".dragArea")
-    .find("svg")
+  // ドラックエリアフロウチャートのsvg
+  jQuery('.dragArea')
+    .find('svg')
     .draggable({
-      connectToSortable: ".sort-drop-area",
-      helper: "clone",
-      revert: "invalid",
-      containment: "body",
+      connectToSortable: '.sort-drop-area',
+      helper: 'clone',
+      revert: 'invalid',
+      containment: 'body',
       start: function(event, ui) {
-        newItem = $(this).attr("id");
+        newItem = $(this).attr('id');
       },
       stop: function(event, ui) {
-        ui.helper.attr("id", newItem);
-        ui.helper.attr("name", "num_data");
-        ui.helper.addClass("context-menu-one");
+        ui.helper.attr('id', newItem);
+        ui.helper.attr('name', 'num_data');
+        ui.helper.addClass('context-menu-one');
         i++;
-      }
+      },
     });
 
-  //ゴミ箱エリア
-  jQuery(".delete_area").droppable({
+  // ゴミ箱エリア
+  jQuery('.delete_area').droppable({
     over: function(event, ui) {
-      if (confirm("本当に削除しますか？")) {
+      if (confirm('本当に削除しますか？')) {
         ui.draggable.remove();
       }
-    }
+    },
   });
 });
-//右クリックメニュー
+// 右クリックメニュー
 $(function() {
   $.contextMenu({
-    selector: ".context-menu-one",
+    selector: '.context-menu-one',
     items: {
       edit: {
-        name: "条件編集",
-        icon: "edit",
+        name: '条件編集',
+        icon: 'edit',
         callback: function(key, opt) {
-          //条件編集のID取得
-          var svgid;
-          svgid = opt.$trigger.attr("id");
-          //条件入力フォーム
-          $("#input_form").dialog({
-            modal: true, //モーダル
-            title: "入力フォーム(仮)",
+          // 条件編集のID取得
+          let svgid;
+          svgid = opt.$trigger.attr('id');
+          // 条件入力フォーム
+          $('#input_form').dialog({
+            modal: true, // モーダル
+            title: '入力フォーム(仮)',
             width: 550,
             heighth: 550,
             buttons: {
               確認: function() {
-                var conditions = document.forms.input_form.input1.value;
-                alert("[条件は]" + conditions + "[id]" + svgid);
-                //ここにデータベースを送るスクリプトを書くと思う
-                $(this).dialog("close");
+                const conditions = document.forms.input_form.input1.value;
+                alert('[条件は]' + conditions + '[id]' + svgid);
+                // ここにデータベースを送るスクリプトを書くと思う
+                $(this).dialog('close');
               },
               キャンセル: function() {
-                $(this).dialog("close");
-              }
-            }
+                $(this).dialog('close');
+              },
+            },
           });
-        }
+        },
       },
-      //削除する
+      // 削除する
       delete: {
-        name: "消去",
-        icon: "delete",
+        name: '消去',
+        icon: 'delete',
         callback: function(key, opt) {
-          //削除するID取得
-          if (confirm("本当に削除しますか？")) {
-            deleteid = opt.$trigger.attr("id");
-            $("#" + deleteid).remove();
-            /*並び順いったん放置
+          // 削除するID取得
+          if (confirm('本当に削除しますか？')) {
+            deleteid = opt.$trigger.attr('id');
+            $('#' + deleteid).remove();
+            /* 並び順いったん放置
             $(function() {
               $(".sort-drop-area")
                 .find('[name="num_data"]')
@@ -111,20 +109,20 @@ $(function() {
             });
             */
           }
-        }
+        },
       },
-      sep1: "---------",
+      sep1: '---------',
       quit: {
-        name: "キャンセル",
-        icon: "quit",
+        name: 'キャンセル',
+        icon: 'quit',
         callback: function() {
           return;
-        }
-      }
-    }
+        },
+      },
+    },
   });
 
-  $(".context-menu-one").on("click", function(e) {
-    console.log("clicked", this);
+  $('.context-menu-one').on('click', function(e) {
+    console.log('clicked', this);
   });
 });
