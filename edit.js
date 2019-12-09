@@ -1,21 +1,24 @@
 // ドラッグアンドソート
 $(function() {
   // ソートエリア
-  $('.sort-drop-area, .if').sortable({
+  jQuery('.sort-drop-area,.if-sort').sortable({
     cursor: 'move',
     opacity: 0.6,
     placeholder: 'ui-state-highlight',
+    connectWith: '.if-sort',
     revert: true,
     // idを送る?
     stop: function(event, ui) {
-      /*
-      const sortitem = $('.sort-drop-area').sortable('toArray');
+      const sortitem = $('.if-sort').sortable('toArray');
       console.log(sortitem);
-      */
+    },
+    receive: function(event, ui) {
       const sortid = ui.item.attr('id');
-      console.log(sortid);
       if (sortid == 5) {
-        $('.sort-drop-area').append('<div class="if">これはdivです</div>');
+        $('.if-box').append(
+          '<div class="if-sort ui-sortable" id="ifbox"></div>',
+        );
+        $('.sort-drop-area,.if-sort').sortable({});
       }
     },
   });
@@ -38,7 +41,7 @@ $(function() {
   $('.dragArea')
     .find('svg')
     .draggable({
-      connectToSortable: '.sort-drop-area, .if',
+      connectToSortable: '.sort-drop-area,.if-sort',
       helper: 'clone',
       revert: 'invalid',
       containment: 'body',
