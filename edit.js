@@ -16,7 +16,7 @@ $(function() {
       console.log(sortid);
       if (sortid == 5) {
         $('.sort-drop-area').append(
-          '<div class="sort-drop-area ui-sortable">これはdivです</div>',
+          '<div class="sort-drop-area">これはdivです</div>',
         );
       }
     },
