@@ -42,6 +42,9 @@ $(function() {
         ui.helper.attr('id', newItem);
         ui.helper.attr('name', 'num_data');
         ui.helper.addClass('context-menu-one');
+        if (newItem == 5) {
+          $('.sort-drop-area').append('<div>これはdivです</div>');
+        }
       },
     });
 
