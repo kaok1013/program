@@ -42,7 +42,6 @@ $(function() {
         ui.helper.attr('id', newItem);
         ui.helper.attr('name', 'num_data');
         ui.helper.addClass('context-menu-one');
-        i++;
       },
     });
 
