@@ -23,6 +23,7 @@ main {
   border-radius: 10px;
 }
 .side {
+  display: flex;
   overflow: auto;
   margin: 1rem;
   border-radius: 10px;
@@ -41,13 +42,16 @@ main {
   overflow: auto;
   width: 15rem;
 }
-
+.if {
+  background-color: aquamarine;
+  display: flex;
+  width: 10rem;
+}
 .side:nth-child(1) > .sort-drop-area > svg {
   margin: 0 auto;
   padding: 3px;
   width: 12rem;
 }
-
 .side:nth-child(2) {
   padding: 5px;
   flex-basis: 25rem;
@@ -64,9 +68,6 @@ main {
   padding: 0.2rem;
   width: 12rem;
 }
-/* .ui-sortable {
-  display: flex;
-} */
 .ui-state-highlight {
   height: 50px;
   border: dotted 2px #0000ff;

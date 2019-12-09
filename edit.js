@@ -1,7 +1,7 @@
 // ドラッグアンドソート
 $(function() {
   // ソートエリア
-  jQuery('.sort-drop-area').sortable({
+  $('.sort-drop-area, .if').sortable({
     cursor: 'move',
     opacity: 0.6,
     placeholder: 'ui-state-highlight',
@@ -15,9 +15,7 @@ $(function() {
       const sortid = ui.item.attr('id');
       console.log(sortid);
       if (sortid == 5) {
-        $('.sort-drop-area').append(
-          '<div class="sort-drop-area ui-sortable">これはdivです</div>',
-        );
+        $('.sort-drop-area').append('<div class="if">これはdivです</div>');
       }
     },
   });
@@ -37,10 +35,10 @@ $(function() {
 */
 
   // ドラックエリアフロウチャートのsvg
-  jQuery('.dragArea')
+  $('.dragArea')
     .find('svg')
     .draggable({
-      connectToSortable: '.sort-drop-area',
+      connectToSortable: '.sort-drop-area, .if',
       helper: 'clone',
       revert: 'invalid',
       containment: 'body',
