@@ -91,3 +91,9 @@ main {
 .delete_area {
   width: 15vh;
 }
+
+.if-sort{
+  background-color: honeydew;
+  width:400px;
+  height: 300px;
+}
