@@ -5,20 +5,20 @@ $(function() {
     cursor: 'move',
     opacity: 0.6,
     placeholder: 'ui-state-highlight',
-    connectWith:'.if-sort',
+    connectWith: '.if-sort',
     revert: true,
     // idを送る?
     stop: function(event, ui) {
       const sortitem = $('.if-sort').sortable('toArray');
-      console.log(sortitem);  
+      console.log(sortitem);
     },
-    receive:function(event,ui){
+    receive: function(event, ui) {
       const sortid = ui.item.attr('id');
       if (sortid == 5) {
         $('.if-box').append(
           '<div class="if-sort ui-sortable" id="ifbox"></div>',
         );
-        $(".sort-drop-area,.if-sort").sortable({});
+        $('.sort-drop-area,.if-sort').sortable({});
       }
     },
   });
