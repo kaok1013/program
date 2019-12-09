@@ -7,9 +7,18 @@ $(function() {
     placeholder: 'ui-state-highlight',
     revert: true,
     // idを送る?
-    stop: function() {
+    stop: function(event, ui) {
+      /*
       const sortitem = $('.sort-drop-area').sortable('toArray');
       console.log(sortitem);
+      */
+      const sortid = ui.item.attr('id');
+      console.log(sortid);
+      if (sortid == 5) {
+        $('.sort-drop-area').append(
+          '<div class="sort-drop-area ui-sortable">これはdivです</div>',
+        );
+      }
     },
   });
   // 順番idを取得 ○_識別子←○の部分1~∞
@@ -42,9 +51,6 @@ $(function() {
         ui.helper.attr('id', newItem);
         ui.helper.attr('name', 'num_data');
         ui.helper.addClass('context-menu-one');
-        if (newItem == 5) {
-          $('.sort-drop-area').append('<div>これはdivです</div>');
-        }
       },
     });
 
