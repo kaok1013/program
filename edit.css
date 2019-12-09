@@ -35,11 +35,13 @@ main {
   background-color: cornflowerblue;
 }
 .side:nth-child(1) > .sort-drop-area {
+  display: flex;
   flex-direction: column;
   background-color: dodgerblue;
   overflow: auto;
   width: 15rem;
 }
+
 .side:nth-child(1) > .sort-drop-area > svg {
   margin: 0 auto;
   padding: 3px;
@@ -62,9 +64,9 @@ main {
   padding: 0.2rem;
   width: 12rem;
 }
-.ui-sortable {
+/* .ui-sortable {
   display: flex;
-}
+} */
 .ui-state-highlight {
   height: 50px;
   border: dotted 2px #0000ff;
