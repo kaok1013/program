@@ -19,10 +19,14 @@ main {
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(33, 33, 33, 0.55);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 .side {
+  padding: 5px;
   display: flex;
   overflow: auto;
   margin: 1rem;
@@ -30,7 +34,7 @@ main {
   justify-content: space-evenly;
 }
 .side:nth-child(1) {
-  flex-basis: 75rem;
+  flex-basis: 80rem;
   display: flex;
   justify-content: space-evenly;
   background-color: cornflowerblue;
@@ -39,38 +43,28 @@ main {
   display: flex;
   flex-direction: column;
   background-color: dodgerblue;
-  overflow: auto;
+  align-items: center;
   width: 15rem;
 }
-.if {
-  background-color: aquamarine;
-  display: flex;
-  width: 10rem;
-}
 .side:nth-child(1) > .sort-drop-area > svg {
-  margin: 0 auto;
   padding: 3px;
   width: 12rem;
 }
+.if-sort {
+  background-color: aquamarine;
+  display: flex;
+  width: 5rem;
+}
 .side:nth-child(2) {
-  padding: 5px;
-  flex-basis: 25rem;
+  flex-basis: 20rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: cadetblue;
 }
-.side:nth-child(2) > img {
-  padding: 0.5rem;
-  width: 10rem;
-}
 .side:nth-child(2) > svg {
   padding: 0.2rem;
   width: 12rem;
-}
-.ui-state-highlight {
-  height: 50px;
-  border: dotted 2px #0000ff;
 }
 .loopStart {
   fill: crimson;
@@ -91,10 +85,4 @@ main {
 
 .delete_area {
   width: 15vh;
-}
-
-.if-sort{
-  background-color: honeydew;
-  width:400px;
-  height: 300px;
 }

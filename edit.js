@@ -5,6 +5,7 @@ $(function() {
     cursor: 'move',
     opacity: 0.6,
     placeholder: 'ui-state-highlight',
+    forcePlaceholderSize: true,
     connectWith: '.if-sort',
     revert: true,
     // idを送る?
@@ -56,7 +57,7 @@ $(function() {
     });
 
   // ゴミ箱エリア
-  jQuery('.delete_area').droppable({
+  $('.delete_area').droppable({
     over: function(event, ui) {
       if (confirm('本当に削除しますか？')) {
         ui.draggable.remove();
