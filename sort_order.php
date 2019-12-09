@@ -1,5 +1,6 @@
 <?php
     $getsort=$_POST['sortitem'];
+    
     if($getsort){
     //データベース接続
         $server = "localhost";
