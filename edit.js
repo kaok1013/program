@@ -10,11 +10,12 @@ $(function() {
     revert: true,
     //idを送る?
     stop: function() {
-      var sortitem = $(".sort-drop-area").sortable("serialize");
+      var sortitem = $(".sort-drop-area").sortable("toArray");
       console.log(sortitem);
     }
   });
   //順番idを取得　○_識別子←○の部分1~∞
+  /*並び順いったん放置
   jQuery(".sort-drop-area").on("sortstop", function() {
     // 番号を設定している要素に対しループ処理
     $(this)
@@ -26,6 +27,7 @@ $(function() {
         $(this).attr("id", idx + 1 + "_" + newid);
       });
   });
+*/
 
   //ドラックエリアフロウチャートのsvg
   jQuery(".dragArea")
@@ -39,7 +41,7 @@ $(function() {
         newItem = $(this).attr("id");
       },
       stop: function(event, ui) {
-        ui.helper.attr("id", i + "_" + newItem);
+        ui.helper.attr("id", newItem);
         ui.helper.attr("name", "num_data");
         ui.helper.addClass("context-menu-one");
         i++;
@@ -96,6 +98,7 @@ $(function() {
           if (confirm("本当に削除しますか？")) {
             deleteid = opt.$trigger.attr("id");
             $("#" + deleteid).remove();
+            /*並び順いったん放置
             $(function() {
               $(".sort-drop-area")
                 .find('[name="num_data"]')
@@ -106,6 +109,7 @@ $(function() {
                   $(this).attr("id", idx + 1 + "_" + newid);
                 });
             });
+            */
           }
         }
       },
