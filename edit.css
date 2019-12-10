@@ -35,7 +35,6 @@ main {
 }
 .side:nth-child(1) {
   flex-basis: 80rem;
-  display: flex;
   justify-content: space-evenly;
   background-color: cornflowerblue;
 }
@@ -57,7 +56,6 @@ main {
 }
 .side:nth-child(2) {
   flex-basis: 20rem;
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: cadetblue;
