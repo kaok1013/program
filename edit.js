@@ -1,5 +1,5 @@
 // ドラッグアンドソート
-$(function() {
+$(function dragsort() {
   // ソートエリア
   jQuery('.sort-drop-area,.if-sort').sortable({
     cursor: 'move',
@@ -9,17 +9,16 @@ $(function() {
     connectWith: '.if-sort',
     revert: true,
     // idを送る?
-    stop: function(event, ui) {
+    stop: function() {
       const sortitem = $('.if-sort').sortable('toArray');
       console.log(sortitem);
     },
     receive: function(event, ui) {
       const sortid = ui.item.attr('id');
       if (sortid == 5) {
-        $('.if-box').append(
-          '<div class="if-sort ui-sortable" id="ifbox"></div>',
-        );
-        $('.sort-drop-area,.if-sort').sortable({});
+        const ifsort = '<div class="if-sort ui-sortable" id="ifbox"></div>';
+        $('.side').append(ifsort);
+        dragsort();
       }
     },
   });
