@@ -1,28 +1,27 @@
 // ドラッグアンドソート
 $(function dragsort() {
-  let margin=100;
   // ソートエリア
-  jQuery('.sort-drop-area,.if-sort').sortable({
-    cursor: 'move',
+  jQuery(".sort-drop-area,.if-sort").sortable({
+    cursor: "move",
     opacity: 0.6,
-    placeholder: 'ui-state-highlight',
+    placeholder: "ui-state-highlight",
     forcePlaceholderSize: true,
-    connectWith: '.if-sort',
+    connectWith: ".if-sort,.sort-drop-area",
     revert: true,
     // idを送る?
     stop: function() {
-      const sortitem = $('.if-sort').sortable('toArray');
+      const sortitem = $(".sort-drop-area").sortable("toArray");
       console.log(sortitem);
+      // $.post("Send_Data.php", { postData: sortitem });
     },
     receive: function(event, ui) {
-      const sortid = ui.item.attr('id');
+      const sortid = ui.item.attr("id");
       if (sortid == 5) {
         const ifsort = '<div class="if-sort ui-sortable" id="ifbox"></div>';
-        $('.side').append(ifsort);
-        $('.if-sort').css('margin-top',margin);
+        $(".side").append(ifsort);
         dragsort();
       }
-    },
+    }
   });
   // 順番idを取得 ○_識別子←○の部分1~∞
   /* 並び順いったん放置
@@ -40,73 +39,73 @@ $(function dragsort() {
 */
 
   // ドラックエリアフロウチャートのsvg
-  $('.dragArea')
-    .find('svg')
+  $(".dragArea")
+    .find("svg")
     .draggable({
-      connectToSortable: '.sort-drop-area,.if-sort',
-      helper: 'clone',
-      revert: 'invalid',
-      containment: 'body',
+      connectToSortable: ".sort-drop-area,.if-sort",
+      helper: "clone",
+      revert: "invalid",
+      containment: "body",
       start: function(event, ui) {
-        newItem = $(this).attr('id');
+        newItem = $(this).attr("id");
       },
       stop: function(event, ui) {
-        ui.helper.attr('id', newItem);
-        ui.helper.attr('name', 'num_data');
-        ui.helper.addClass('context-menu-one');
-      },
+        ui.helper.attr("id", newItem);
+        ui.helper.attr("name", "num_data");
+        ui.helper.addClass("context-menu-one");
+      }
     });
 
   // ゴミ箱エリア
-  $('.delete_area').droppable({
+  $(".delete_area").droppable({
     over: function(event, ui) {
-      if (confirm('本当に削除しますか？')) {
+      if (confirm("本当に削除しますか？")) {
         ui.draggable.remove();
       }
-    },
+    }
   });
 });
 // 右クリックメニュー
 $(function() {
   $.contextMenu({
-    selector: '.context-menu-one',
+    selector: ".context-menu-one",
     items: {
       edit: {
-        name: '条件編集',
-        icon: 'edit',
+        name: "条件編集",
+        icon: "edit",
         callback: function(key, opt) {
           // 条件編集のID取得
           let svgid;
-          svgid = opt.$trigger.attr('id');
+          svgid = opt.$trigger.attr("id");
           // 条件入力フォーム
-          $('#input_form').dialog({
+          $("#input_form").dialog({
             modal: true, // モーダル
-            title: '入力フォーム(仮)',
+            title: "入力フォーム(仮)",
             width: 550,
             heighth: 550,
             buttons: {
               確認: function() {
                 const conditions = document.forms.input_form.input1.value;
-                alert('[条件は]' + conditions + '[id]' + svgid);
+                alert("[条件は]" + conditions + "[id]" + svgid);
                 // ここにデータベースを送るスクリプトを書くと思う
-                $(this).dialog('close');
+                $(this).dialog("close");
               },
               キャンセル: function() {
-                $(this).dialog('close');
-              },
-            },
+                $(this).dialog("close");
+              }
+            }
           });
-        },
+        }
       },
       // 削除する
       delete: {
-        name: '消去',
-        icon: 'delete',
+        name: "消去",
+        icon: "delete",
         callback: function(key, opt) {
           // 削除するID取得
-          if (confirm('本当に削除しますか？')) {
-            deleteid = opt.$trigger.attr('id');
-            $('#' + deleteid).remove();
+          if (confirm("本当に削除しますか？")) {
+            deleteid = opt.$trigger.attr("id");
+            $("#" + deleteid).remove();
             /* 並び順いったん放置
             $(function() {
               $(".sort-drop-area")
@@ -120,20 +119,20 @@ $(function() {
             });
             */
           }
-        },
+        }
       },
-      sep1: '---------',
+      sep1: "---------",
       quit: {
-        name: 'キャンセル',
-        icon: 'quit',
+        name: "キャンセル",
+        icon: "quit",
         callback: function() {
           return;
-        },
-      },
-    },
+        }
+      }
+    }
   });
 
-  $('.context-menu-one').on('click', function(e) {
-    console.log('clicked', this);
+  $(".context-menu-one").on("click", function(e) {
+    console.log("clicked", this);
   });
 });
