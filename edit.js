@@ -1,5 +1,6 @@
 // ドラッグアンドソート
 $(function dragsort() {
+  let margin=100;
   // ソートエリア
   jQuery('.sort-drop-area,.if-sort').sortable({
     cursor: 'move',
@@ -18,6 +19,7 @@ $(function dragsort() {
       if (sortid == 5) {
         const ifsort = '<div class="if-sort ui-sortable" id="ifbox"></div>';
         $('.side').append(ifsort);
+        $('.if-sort').css('margin-top',margin);
         dragsort();
       }
     },
