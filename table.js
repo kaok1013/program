@@ -1,3 +1,15 @@
+$(document).ready(function () {
+  var r_end = 8; 
+  var c_end = 8; 
+  var tableJQ = $('<table id="table_id1" cellpadding="55" border="1"> <tbody>');
+  for (var r = 1; r <= r_end; r++) {
+      var trJQ_r = $('<tr></tr>').appendTo(tableJQ);
+      for (var c = 1; c <= c_end; c++) {
+          $('<td class="table" id = "1"></td>').appendTo(trJQ_r);
+      }
+  }
+  $('#tableid').append(tableJQ);
+});
 $(function() {
   $(".table").sortable({
     cursor: "move",
@@ -5,7 +17,12 @@ $(function() {
     placeholder: "ui-state-highlight",
     forcePlaceholderSize: true,
     connectWith: ".table",
-    revert: true
+    revert: true,
+    stop: function() {
+      const sortitem = $(".table").serialize();
+      console.log(sortitem);
+      // $.post("Send_Data.php", { postData: sortitem });
+    },
   });
 
   $("svg").draggable({
@@ -14,27 +31,4 @@ $(function() {
     revert: "invalid",
     containment: "body"
   });
-  //   $("#tableid").css({ display: "table", "border-collapse": "collapse" });
-  //   var tbody = $("<div>")
-  //     .addClass("tbody")
-  //     .css({ display: "table-row-group" });
-  //   Object.keys(Array(4).fill(null)).forEach(function(x) {
-  //     var row = $("<div>")
-  //       .addClass("row")
-  //       .css({ display: "table-row" });
-  //     Object.keys(Array(4).fill(null)).forEach(function(y) {
-  //       $("<div>")
-  //         .addClass("cell")
-  //         .attr("id", "td" + (parseInt(x) * 4 + parseInt(y) + 1))
-  //         .text(parseInt(x) * 4 + parseInt(y) + 1)
-  //         .css({
-  //           display: "table-cell",
-  //           border: "1px solid #000000",
-  //           "text-align": "center"
-  //         })
-  //         .appendTo(row);
-  //     });
-  //     row.appendTo(tbody);
-  //   });
-  //   tbody.appendTo($("#tableid"));
 });
