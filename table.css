@@ -38,15 +38,16 @@ main {
   justify-content: space-evenly;
   background-color: cornflowerblue;
 }
-.side:nth-child(1) > .table {
-  display: flex;
-  flex-direction: column;
+
+.side:nth-child(1) > table > tbody > tr > td {
   background-color: dodgerblue;
   align-items: center;
   width: 15rem;
 }
-.side:nth-child(1) > .table > svg {
-  width: 5vh;
+
+.side:nth-child(1) > table > tbody > tr > td > svg {
+  padding:3px;
+  width: 6rem;
 }
 .side:nth-child(2) {
   flex-basis: 20rem;
@@ -73,15 +74,4 @@ main {
 }
 .start {
   fill: darkgreen;
-}
-
-.delete_area {
-  width: 15vh;
-}
-
-.ui-sortable {
-  width: 30vh;
-}
-.ui-draggable {
-  width: 5vh;
 }
