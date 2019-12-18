@@ -1,4 +1,5 @@
 // ドラッグアンドソート
+// test
 $(function dragsort() {
   // ソートエリア
   jQuery(".sort-drop-area,.if-sort").sortable({
