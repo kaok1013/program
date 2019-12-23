@@ -1,11 +1,15 @@
+// 保存する二次元配列sortitem=識別子がどこに入っているかconlist=条件式がどこに入っているか
+const sortitem = new Array(8).fill(null).map(() => new Array(5).fill(null));
+const conlist = new Array(8).fill(null).map(() => new Array(5).fill(null));
+
 $(function() {
   // 表作成
   const rend = 8; // 行
   const cend = 5; // 列
   const tableJQ = $('<table cellpadding="15" border="1"> <tbody>');
-  for (let r = 1; r <= rend; r++) {
+  for (let r = 0; r < rend; r++) {
     const trJQr = $('<tr></tr>').appendTo(tableJQ);
-    for (let c = 1; c <= cend; c++) {
+    for (let c = 0; c < cend; c++) {
       $('<td class="table" id="table' + r + '_' + c + '"></td>').appendTo(
         trJQr,
       );
@@ -13,29 +17,27 @@ $(function() {
   }
   $('#tableid').append(tableJQ);
 });
-
 $(function() {
   // ソート
   $('.table').sortable({
     cursor: 'move',
-    opacity: 0.6,
     placeholder: 'ui-state-highlight',
     forcePlaceholderSize: true,
     connectWith: '.table',
     revert: true,
     stop: function() {
-      const sortitem = [];
       const rend = 8; // 行
       const cend = 5; // 列
-      for (let r = 1; r <= rend; r++) {
-        const toarray = [];
-        for (let c = 1; c <= cend; c++) {
+      for (let r = 0; r < rend; r++) {
+        for (let c = 0; c < cend; c++) {
           const table = 'table' + r + '_' + c;
-          toarray.push($('#' + table).sortable('toArray'));
+          const sub = $('#' + table).sortable('toArray');
+          if (sub[0] != undefined) {
+            sortitem[r][c] = sub[0];
+          }
         }
-        sortitem.push(toarray);
       }
-      console.log(sortitem);
+      console.log(sortitem); // 識別子がどこに入っているか
       // $.post("Send_Data.php", { postData: sortitem });
     },
   });
@@ -53,14 +55,6 @@ $(function() {
       ui.helper.addClass('context-menu-one');
     },
   });
-  // ゴミ箱エリア
-  $('.delete_area').droppable({
-    over: function(event, ui) {
-      if (confirm('本当に削除しますか？')) {
-        ui.draggable.remove();
-      }
-    },
-  });
 });
 // 右クリックメニュー
 $(function() {
@@ -72,7 +66,7 @@ $(function() {
         icon: 'edit',
         callback: function(key, opt) {
           // 条件編集のID取得
-          const svgid = opt.$trigger.attr('id');
+          const tableid = opt.$trigger.parent().attr('id');
           // 条件入力フォーム
           $('#input_form').dialog({
             modal: true, // モーダル
@@ -80,15 +74,40 @@ $(function() {
             width: 550,
             heighth: 550,
             buttons: {
-              確認: function() {
-                const conditions = document.forms.input_form.input1.value;
-                alert('[条件は]' + conditions + '[id]' + svgid);
-                // ここにデータベースを送るスクリプトを書くと思う
-                $(this).dialog('close');
+              ok: {
+                text: '確認',
+                id: 'okbtnid',
+                click: function() {
+                  const conditions = document.forms.input_form.input1.value;
+                  const rend = 8; // 行
+                  const cend = 5; // 列
+                  for (let r = 0; r < rend; r++) {
+                    for (let c = 0; c < cend; c++) {
+                      ret = 'table' + r + '_' + c;
+                      if (tableid == ret) {
+                        conlist[r][c] = conditions;
+                      }
+                    }
+                  }
+                  console.log(conlist); // 条件式がどこに入っているか
+                  $(this).dialog('close');
+                },
               },
-              キャンセル: function() {
-                $(this).dialog('close');
+              cancel: {
+                text: 'キャンセル',
+                id: 'cancelbtnid',
+                click: function() {
+                  $(this).dialog('close');
+                },
               },
+            },
+            open: function() {
+              $(document).keydown(function(event) {
+                if (event.keyCode == 13) {
+                  event.preventDefault();
+                  $('#okbtnid').click;
+                }
+              });
             },
           });
         },
@@ -100,20 +119,19 @@ $(function() {
         callback: function(key, opt) {
           // 削除するID取得
           if (confirm('本当に削除しますか？')) {
-            deleteid = opt.$trigger.attr('id');
-            $('#' + deleteid).remove();
-            /* 並び順いったん放置
-            $(function() {
-              $(".sort-drop-area")
-                .find('[name="num_data"]')
-                .each(function(idx) {
-                  var str = $(this).attr("id");
-                  var newid = str.substring(str.length - 1, str.length);
-                  // タグ内に通し番号を設定（idxは0始まりなので+1する）
-                  $(this).attr("id", idx + 1 + "_" + newid);
-                });
-            });
-            */
+            deleteid = opt.$trigger.parent().attr('id');
+            $('#' + deleteid).empty();
+            for (let r = 0; r < 8; r++) {
+              for (let c = 0; c < 5; c++) {
+                ret = 'table' + r + '_' + c;
+                if (deleteid == ret) {
+                  conlist[r][c] = null;
+                  sortitem[r][c] = null;
+                }
+              }
+            }
+            console.log(conlist);
+            console.log(sortitem);
           }
         },
       },
