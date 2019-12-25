@@ -53,6 +53,7 @@ $(function() {
     stop: function(event, ui) {
       ui.helper.attr('id', newItem);
       ui.helper.addClass('context-menu-one');
+      ui.helper.attr('title', '条件式が入力されていません。');
     },
   });
 });
@@ -64,7 +65,8 @@ $(function() {
       edit: {
         name: '条件編集',
         icon: 'edit',
-        callback: function(key, opt) {
+        callback: function (key, opt) {
+          svg = $(this);
           // 条件編集のID取得
           const tableid = opt.$trigger.parent().attr('id');
           // 条件入力フォーム
@@ -77,7 +79,7 @@ $(function() {
               ok: {
                 text: '確認',
                 id: 'okbtnid',
-                click: function() {
+                click: function(event,ui) {
                   const conditions = document.forms.input_form.input1.value;
                   const rend = 8; // 行
                   const cend = 5; // 列
@@ -86,6 +88,7 @@ $(function() {
                       ret = 'table' + r + '_' + c;
                       if (tableid == ret) {
                         conlist[r][c] = conditions;
+                        $(svg).attr('title',conditions);
                       }
                     }
                   }
@@ -148,5 +151,15 @@ $(function() {
 
   $('.context-menu-one').on('click', function(e) {
     console.log('clicked', this);
+  });
+});
+
+// tooltip
+$(function () {
+  $(".table").tooltip({
+    position: {
+      my: "left center",
+      at: "right center"
+    }
   });
 });
