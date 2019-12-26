@@ -19,6 +19,7 @@ $(function() {
 });
 $(function() {
   // ソート
+  let subcon = null;
   $('.table').sortable({
     cursor: 'move',
     placeholder: 'ui-state-highlight',
@@ -35,10 +36,34 @@ $(function() {
           if (sub[0] != undefined) {
             sortitem[r][c] = sub[0];
           }
+          else {
+            sortitem[r][c] = null;
+          }
         }
       }
       console.log(sortitem); // 識別子がどこに入っているか
+      console.log(conlist); // 条件式がどこに入っているか
       // $.post("Send_Data.php", { postData: sortitem });
+    },
+    remove: function () {
+      const rend = 8; // 行
+      const cend = 5; // 列
+      const removeid = $(this).attr('id');
+      for (let r = 0; r < rend; r++) {
+        for (let c = 0; c < cend; c++) {
+          const ifid = 'table' + r + '_' + c;
+          if (ifid == removeid) {
+            subcon = conlist[r][c];
+            conlist[r][c] = null;
+          }
+        }
+      }
+    },
+    receive: function () {
+      const con = $(this).attr('id');
+      let i = con.substr(5, 1);
+      let j = con.substr(7, 1);
+      conlist[i][j] = subcon;
     },
   });
 
@@ -92,7 +117,6 @@ $(function() {
                       }
                     }
                   }
-                  console.log(conlist); // 条件式がどこに入っているか
                   $(this).dialog('close');
                 },
               },
