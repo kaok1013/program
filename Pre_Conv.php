@@ -55,7 +55,7 @@ function Pre_Conv($module, $string){
 function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
     /* 
     再帰関数
-    引数    ：（参照開始位置(縦), 参照開始位置（横）(flag), 参照終了位置（縦）, 識別子, 条件式）
+    引数    ：（参照開始位置(縦), 参照開始位置（横）, flag, 参照終了位置（縦）, 識別子, 条件式）
     戻り値  ：flag
     処理    ：分岐の処理
     ※elseifにおいて参照終了位置まで見て分岐収束が無ければスタックを一つ捨てる
@@ -88,7 +88,6 @@ function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
         return --$flag;
     }
 
-//--
     for($i = $start_i, $j = $start_j ; $module[$i][$j] != 2 && $end_i != $i ; $i++){
         /*test--
         print($i." : ".$j."<br>");
@@ -120,12 +119,101 @@ function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
         }
         
     }
-//--
 
     return $flag;
 }
 
-//test--
+function Send_Data($Array_module, $Array_string){
+
+    $dsn = 'mysql:dbname=rakurakupg;host=localhost';
+    $user = 'root';
+    $password = 'ruurei13';
+    
+    $Data = array();    //一時的にデータ格納（2次元配列：Data[0:テーブル番号, 1:SQL文]）
+    $table = count($Array_module);
+    
+    for($i = 0 ; $table > $i ; $i++){
+
+        /* create table */
+        $sql = "CREATE TABLE `rakurakupg`.`detail_module_$i` 
+        ( `Identifier` INT NOT NULL , 
+        `Module` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , 
+        `String` VARCHAR(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL , 
+        PRIMARY KEY (`Identifier`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;";
+
+        /* SQL(create table) */
+        try{
+            $dbh = new PDO($dsn, $user, $password);
+            /*test--
+            print("実行するsql文（create table）<br><br>".$sql."<br><br>");
+            --test*/
+            $res = $dbh->query($sql);
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $dbh = null;
+
+        $element = count($Array_module[$i]);
+
+        for($j = 0 ; $element > $j ; $j++){
+            /* Data[falg]にデータ代入 */
+            if(empty($Array_module[$i][$j+1])){
+                $end = ";";
+            }
+            else{
+                $end = ",";
+            }
+            
+            $tmp = $j+1;
+
+            $Data[$i][$j] = "(".$tmp.", '".$Array_module[$i][$j]."', '".$Array_string[$i][$j]."')".$end;
+        }
+    }
+
+    /* Data中身 test-- 
+    for($i = 0 ; $table > $i ; $i++){
+        $j = 0;
+        while(true){
+            if(empty($Data[$i][$j]))
+                break;
+            print($Data[$i][$j]);
+            $j++;
+            if($j % 5 == 0){
+                print("<br>");
+            }
+        }
+        print("<br>");
+    }
+    --test */
+
+    for($i = 0 ; $table > $i ; $i++){
+        $element = count($Array_module[$i]);
+        $sql = "insert into `detail_module_$i`(`Identifier`, `Module`, `String`) values";
+            for($j = 0 ; $element > $j ; $j++){
+                $sql .= $Data[$i][$j];
+            }
+        try{
+            $dbh = new PDO($dsn, $user, $password);
+            /*sql文 test--
+            print("<br>実行するsql文（insert）<br><br>".$sql."<br><br>");
+            --test*/
+            /* SQL(insert) */
+            $result = $dbh->query($sql);
+            if (!$result) {
+                die('SELECTクエリーが失敗しました。'.mysqli_error());
+            }
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
+            die();
+        }
+        $dbh = null;
+    }
+}
+
+/*test--
 $module = [["1","",""], 
 ["","",""], 
 ["3","",""], 
@@ -194,7 +282,7 @@ $string =[["1","",""],
 ["","",""], 
 ["2","",""]
 ];
-//--test
+--test*/
 
 //ここからmain関数
 
@@ -202,9 +290,9 @@ $Array_module = array();
 $Array_string = array();
 
 list($Array_module, $Array_string) = Pre_Conv($module, $string);
-//Send_Data($Array_module, $Array_string);
+Send_Data($Array_module, $Array_string);
 
-//test--
+/*test--
 print("teble1<br>");
 for($i = 0, $j = 0 ; ;$j++){
     if(empty($Array_module[$i][$j])){
@@ -264,7 +352,7 @@ for($i = 3, $j = 0 ; ;$j++){
     }
     print($Array_string[$i][$j].", ");
 }
-//--test
+--test*/
 
 ?>
 </body>

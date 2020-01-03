@@ -1,4 +1,5 @@
-// 保存する二次元配列sortitem=識別子がどこに入っているかconlist=条件式がどこに入っているか
+/* eslint-disable linebreak-style */
+// 保存する二次元配列sortitem.識別子conlist.条件式
 const sortitem = new Array(8).fill(null).map(() => new Array(5).fill(null));
 const conlist = new Array(8).fill(null).map(() => new Array(5).fill(null));
 
@@ -35,17 +36,13 @@ $(function() {
           const sub = $('#' + table).sortable('toArray');
           if (sub[0] != undefined) {
             sortitem[r][c] = sub[0];
-          }
-          else {
+          } else {
             sortitem[r][c] = null;
           }
         }
       }
-      console.log(sortitem); // 識別子がどこに入っているか
-      console.log(conlist); // 条件式がどこに入っているか
-      // $.post("Send_Data.php", { postData: sortitem });
     },
-    remove: function () {
+    remove: function() {
       const rend = 8; // 行
       const cend = 5; // 列
       const removeid = $(this).attr('id');
@@ -59,10 +56,10 @@ $(function() {
         }
       }
     },
-    receive: function () {
+    receive: function() {
       const con = $(this).attr('id');
-      let i = con.substr(5, 1);
-      let j = con.substr(7, 1);
+      const i = con.substr(5, 1);
+      const j = con.substr(7, 1);
       conlist[i][j] = subcon;
     },
   });
@@ -90,7 +87,7 @@ $(function() {
       edit: {
         name: '条件編集',
         icon: 'edit',
-        callback: function (key, opt) {
+        callback: function(key, opt) {
           svg = $(this);
           // 条件編集のID取得
           const tableid = opt.$trigger.parent().attr('id');
@@ -104,7 +101,7 @@ $(function() {
               ok: {
                 text: '確認',
                 id: 'okbtnid',
-                click: function(event,ui) {
+                click: function(event, ui) {
                   const conditions = document.forms.input_form.input1.value;
                   const rend = 8; // 行
                   const cend = 5; // 列
@@ -113,7 +110,7 @@ $(function() {
                       ret = 'table' + r + '_' + c;
                       if (tableid == ret) {
                         conlist[r][c] = conditions;
-                        $(svg).attr('title',conditions);
+                        $(svg).attr('title', conditions);
                       }
                     }
                   }
@@ -179,11 +176,29 @@ $(function() {
 });
 
 // tooltip
-$(function () {
-  $(".table").tooltip({
+$(function() {
+  $('.table').tooltip({
     position: {
-      my: "left center",
-      at: "right center"
-    }
+      my: 'left center',
+      at: 'right center',
+    },
   });
 });
+
+window.onbeforeunload = function() {
+  $.ajax({
+    type: 'POST',
+    url: 'Pre_Conv.php',
+    data: {
+      module: sortitem,
+      string: conlist,
+    },
+    success: function() {
+      alert('OK');
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      alert('NG');
+    },
+  });
+  return '';
+};
