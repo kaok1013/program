@@ -1,0 +1,54 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/*メニューバー*/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1b2538;
+}
+li {
+  float: left;
+  border-right: 1px solid #bbbbbb;
+}
+li:last-child {
+  border-right: none;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover:not(.active) {
+  background-color: #a9bce2;
+}
+.active {
+  background-color: #da3c41;
+}
+iframe.flowchart {
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 700px;
+  height: 90vh;
+  background-color: lightgreen;
+  overflow: scroll;
+}
+div.program {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 25px;
+  width: 450px;
+  height: 90vh;
+  background-color: rgb(55, 61, 66);
+  overflow: scroll;
+  color: white;
+}

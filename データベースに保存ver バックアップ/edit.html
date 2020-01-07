@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Web上でフローチャートを用いて簡単にプログラミングができます"
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="edit.css" type="text/css" />
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+    <link
+      rel="stylesheet"
+      href="jQuery-contextMenu/dist/jquery.contextMenu.min.css"
+    />
+    <script src="jquery-3.4.1.js"></script>
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
+    <script src="jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
+    <script src="edit.js"></script>
+    <title>らくらくC言語</title>
+  </head>
+
+  <body style="background-color:lightblue;">
+    <main>
+      <div class="side">
+        <div class="sort-drop-area"></div>
+      </div>
+      <div class="side dragArea">
+        <svg
+          class="start"
+          id="1"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <ellipse
+              cx="641"
+              cy="361"
+              rx="640"
+              ry="360"
+              stroke-width="4"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+
+        <svg
+          class="end"
+          id="2"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <path
+              d="M 392.84 1 L 889.16 1 C 1105.57 1 1281 162.18 1281 361 C 1281 559.82 1105.57 721 889.16 721 L 392.84 721 C 176.43 721 1 559.82 1 361 C 1 162.18 176.43 1 392.84 1 Z"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+
+        <svg
+          class="loopStart"
+          id="3"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <path
+              d="M 249.16 1 L 1032.84 1 L 1281 241 L 1281 661 C 1281 694.14 1251.76 721 1215.69 721 L 66.31 721 C 30.24 721 1 694.14 1 661 L 1 241 L 249.16 1 Z"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+
+        <svg
+          class="loopEnd"
+          id="4"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <path
+              d="M 249.16 1 L 1032.84 1 L 1281 241 L 1281 661 C 1281 694.14 1251.76 721 1215.69 721 L 66.31 721 C 30.24 721 1 694.14 1 661 L 1 241 L 249.16 1 Z"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+
+        <svg
+          class="decision"
+          id="5"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <path
+              d="M 641 1 L 1281 361 L 641 721 L 1 361 Z"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+
+        <svg
+          class="document"
+          id="6"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <path
+              d="M 1276 1 C 1278.76 1 1281 3.24 1281 6 L 1281 631 Q 961 469 641 631 Q 321 793 1 631 L 1 91 L 1 6 C 1 3.24 3.24 1 6 1 Z"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+
+        <svg
+          class="process"
+          id="7"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <rect
+              x="1"
+              y="1"
+              width="1280"
+              height="720"
+              rx="7"
+              ry="7"
+              stroke-width="4"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+        <!-- storedはいらない
+        <svg
+          class="stored"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <path
+              d="M 133.63 1 L 1274.24 1 C 1280.99 7.83 1280.99 18.17 1274.24 25 C 1223.02 78.48 1189.22 212.05 1189.22 361 C 1189.22 509.95 1223.02 643.52 1274.24 697 C 1280.99 703.83 1280.99 714.17 1274.24 721 L 133.63 721 C 60.38 721 1 559.82 1 361 C 1 162.18 60.38 1 133.63 1 Z"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+      -->
+        <svg
+          class="io"
+          id="8"
+          name="num_date"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="-0.5 -0.5 1280 720"
+        >
+          <defs />
+          <g>
+            <path
+              d="M 493.8 721 L 7 721 Q 1 721 3.27 715.45 L 293.13 6.55 Q 295.4 1 301.4 1 L 1275 1 Q 1281 1 1278.73 6.55 L 988.87 715.45 Q 986.6 721 980.6 721 Z"
+              stroke-width="4"
+              stroke-miterlimit="10"
+              pointer-events="none"
+              fill-opacity="0.85"
+              stroke-opacity="0.9"
+            />
+          </g>
+        </svg>
+      </div>
+    </main>
+
+    <script>
+      // ここにJavaScriptコードを書いていく
+    </script>
+    <!-- 入力フォーム(仮) -->
+    <form id="input_form" style="display:none;">
+      <p>条件</p>
+      <input type="text" id="input1" size="50" maxlength="50" />
+    </form>
+    <!-- ゴミ箱 -->
+    <div class="delete_area">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 512 512"
+        style="width: 15vh; height: 4vh; opacity: 1;"
+        xml:space="preserve"
+      >
+        <style type="text/css">
+          .st0 {
+            fill: #4b4b4b;
+          }
+        </style>
+        <g>
+          <path
+            class="st0"
+            d="M439.114,69.747c0,0,2.977,2.1-43.339-11.966c-41.52-12.604-80.795-15.309-80.795-15.309l-2.722-19.297
+          C310.387,9.857,299.484,0,286.642,0h-30.651h-30.651c-12.825,0-23.729,9.857-25.616,23.175l-2.722,19.297
+          c0,0-39.258,2.705-80.778,15.309C69.891,71.848,72.868,69.747,72.868,69.747c-10.324,2.849-17.536,12.655-17.536,23.864v16.695
+          h200.66h200.677V93.611C456.669,82.402,449.456,72.596,439.114,69.747z"
+            style="fill: rgb(75, 75, 75);"
+          ></path>
+          <path
+            class="st0"
+            d="M88.593,464.731C90.957,491.486,113.367,512,140.234,512h231.524c26.857,0,49.276-20.514,51.64-47.269
+          l25.642-327.21H62.952L88.593,464.731z M342.016,209.904c0.51-8.402,7.731-14.807,16.134-14.296
+          c8.402,0.51,14.798,7.731,14.296,16.134l-14.492,239.493c-0.51,8.402-7.731,14.798-16.133,14.288
+          c-8.403-0.51-14.806-7.722-14.296-16.125L342.016,209.904z M240.751,210.823c0-8.42,6.821-15.241,15.24-15.241
+          c8.42,0,15.24,6.821,15.24,15.241v239.492c0,8.42-6.821,15.24-15.24,15.24c-8.42,0-15.24-6.821-15.24-15.24V210.823z
+           M153.833,195.608c8.403-0.51,15.624,5.894,16.134,14.296l14.509,239.492c0.51,8.403-5.894,15.615-14.296,16.125
+          c-8.403,0.51-15.624-5.886-16.134-14.288l-14.509-239.493C139.026,203.339,145.43,196.118,153.833,195.608z"
+            style="fill: rgb(75, 75, 75);"
+          ></path>
+        </g>
+      </svg>
+    </div>
+  </body>
+  <hooter>
+    <p style="text-align: right">©Brute Force</p>
+  </hooter>
+</html>

@@ -1,0 +1,80 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  /*全要素のマージン・パディングをリセット*/
+  line-height: 1.5; /*全要素の行の高さを1.5倍にする*/
+  color: #333333; /*文字色*/
+}
+main {
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+}
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: auto;
+  border: none;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.side {
+  padding: 5px;
+  display: flex;
+  overflow: auto;
+  margin: 1rem;
+  border-radius: 10px;
+  justify-content: space-evenly;
+}
+.side:nth-child(1) {
+  flex-basis: 80rem;
+  justify-content: space-evenly;
+  background-color: cornflowerblue;
+}
+
+.side:nth-child(1) > table > tbody > tr > td {
+  background-color: dodgerblue;
+  align-items: center;
+  width: 15rem;
+}
+
+.side:nth-child(1) > table > tbody > tr > td > svg {
+  padding: 3px;
+  width: 6rem;
+}
+.side:nth-child(2) {
+  flex-basis: 20rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: cadetblue;
+}
+.side:nth-child(2) > svg {
+  padding: 0.2rem;
+  width: 12rem;
+}
+.loopStart {
+  fill: crimson;
+}
+.loopEnd {
+  fill: darkblue;
+  transform: rotate(180deg);
+}
+.decision {
+  fill: darkkhaki;
+}
+.decisionend {
+  fill: hotpink;
+}
+.document {
+  fill: lightgray;
+}
+.start {
+  fill: darkgreen;
+}

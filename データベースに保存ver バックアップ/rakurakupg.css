@@ -1,0 +1,66 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/*メニューバー*/
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1b2538;
+}
+li {
+  float: left;
+  border-right: 1px solid #bbbbbb;
+}
+li:last-child {
+  border-right: none;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover:not(.active) {
+  background-color: #a9bce2;
+}
+.active {
+  background-color: #da3c41;
+}
+/*タイトル*/
+.mx-auto {
+  width: 100wh;
+  height: 100vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.mx-auto p {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 550px;
+  text-align: center; /*一応BOX内の文字も中央寄せ*/
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-size: 50px;
+  font-weight: bold;
+  color: azure;
+}

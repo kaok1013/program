@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+div.Area_class {
+  background-color: aqua;
+  float: left;
+  width: 99vh;
+  height: 99vh;
+}
+
+div.DropArea_class {
+  display: flex;
+  flex-direction: column;
+  background-color: rebeccapurple;
+  margin: 0 auto;
+  width: 90vh;
+  height: 99vh;
+  overflow: auto;
+}
+
+div.DragArea_class {  
+  background-color: azure;
+  text-align: center;
+  width: 50vh;
+  height: 99vh;
+  overflow: auto;
+}
+
+.ui-draggable {
+  width: 30vh;
+}
+
+.ui-sortable {
+  width: 30vh;
+}
