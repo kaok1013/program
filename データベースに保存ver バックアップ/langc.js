@@ -1,13 +1,13 @@
 /* eslint-disable linebreak-style */
 // 保存する二次元配列sortitem.識別子conlist.条件式
-const sortitem = new Array(8).fill(null).map(() => new Array(5).fill(null));
-const conlist = new Array(8).fill(null).map(() => new Array(5).fill(null));
+const sortitem = new Array(15).fill(null).map(() => new Array(5).fill(null));
+const conlist = new Array(15).fill(null).map(() => new Array(5).fill(null));
 
 $(function() {
   // 表作成
-  const rend = 8; // 行
+  const rend = 15; // 行
   const cend = 5; // 列
-  const tableJQ = $('<table cellpadding="15" border="1"> <tbody>');
+  const tableJQ = $('<table cellpadding="15" bordercolor="#37a1e5"> <tbody>');
   for (let r = 0; r < rend; r++) {
     const trJQr = $('<tr></tr>').appendTo(tableJQ);
     for (let c = 0; c < cend; c++) {
@@ -26,8 +26,8 @@ $(function() {
     forcePlaceholderSize: true,
     connectWith: '.table',
     revert: true,
-    stop: function() {
-      const rend = 8; // 行
+    update: function() {
+      const rend = 15; // 行
       const cend = 5; // 列
       for (let r = 0; r < rend; r++) {
         for (let c = 0; c < cend; c++) {
@@ -52,9 +52,19 @@ $(function() {
       }).done(function(response) {
         $('#pro').html(response);
       });
+
+      //線を引く
+      const leadlist = document.getElementsByClassName('lead-line-list');
+      console.log(leadlist);
+      if (leadlist.length == 3) {
+        removeline.remove();
+      }
+      for (let i = 0; i < leadlist.length - 1; i++) {
+        removeline = new LeaderLine(leadlist[i], leadlist[i + 1]);
+      }
     },
     remove: function() {
-      const rend = 8; // 行
+      const rend = 15; // 行
       const cend = 5; // 列
       const removeid = $(this).attr('id');
       for (let r = 0; r < rend; r++) {
@@ -76,17 +86,29 @@ $(function() {
   });
 
   // ドラッグ
-  $('svg').draggable({
-    connectToSortable: '.table',
-    helper: 'clone',
+  $('#sort').sortable({
+    connectWith: '.table',
     containment: 'body',
+    helper: 'clone',
+    revert: true,
+    placeholder: 'ui-state-highlight',
     start: function(event, ui) {
-      newItem = $(this).attr('id');
+      $(ui.item).show();
+      clone = $(ui.item).clone();
+      before = $(ui.item).prev();
+      parent = $(ui.item).parent();
+      newItem = $(ui.item).attr('id');
     },
-    stop: function(event, ui) {
-      ui.helper.attr('id', newItem);
-      ui.helper.addClass('context-menu-one');
-      ui.helper.attr('title', '条件式が入力されていません。');
+    remove: function(event, ui) {
+      subtitle = $(ui.item).attr('title');
+      if (before.length) before.after(clone);
+      else {
+        parent.prepend(clone);
+      }
+      ui.item.attr('id', newItem);
+      ui.item.addClass('context-menu-one');
+      ui.item.addClass('lead-line-list');
+      ui.item.attr('title', '条件式が入力されていません。');
     },
   });
 });
@@ -114,7 +136,7 @@ $(function() {
                 id: 'okbtnid',
                 click: function(event, ui) {
                   const conditions = document.forms.input_form.input1.value;
-                  const rend = 8; // 行
+                  const rend = 15; // 行
                   const cend = 5; // 列
                   for (let r = 0; r < rend; r++) {
                     for (let c = 0; c < cend; c++) {
@@ -168,7 +190,7 @@ $(function() {
           if (confirm('本当に削除しますか？')) {
             deleteid = opt.$trigger.parent().attr('id');
             $('#' + deleteid).empty();
-            for (let r = 0; r < 8; r++) {
+            for (let r = 0; r < 15; r++) {
               for (let c = 0; c < 5; c++) {
                 ret = 'table' + r + '_' + c;
                 if (deleteid == ret) {
@@ -177,8 +199,6 @@ $(function() {
                 }
               }
             }
-            console.log(conlist);
-            console.log(sortitem);
             $.ajax({
               //POST通信
               type: 'POST',
@@ -213,6 +233,15 @@ $(function() {
 // tooltip
 $(function() {
   $('.table').tooltip({
+    position: {
+      my: 'left center',
+      at: 'right center',
+    },
+  });
+});
+
+$(function() {
+  $('.toolclass').tooltip({
     position: {
       my: 'left center',
       at: 'right center',

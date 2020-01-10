@@ -45,7 +45,7 @@ div.program {
   color: #333333; /*文字色*/
 }
 main {
-  height: 90vh;
+  height: 29rem;
   display: flex;
   justify-content: space-between;
 }
@@ -128,4 +128,12 @@ main {
 }
 .start {
   fill: darkgreen;
+}
+
+.elseifdecision {
+  fill: firebrick;
+}
+
+.elseenddecision {
+  fill: black;
 }
