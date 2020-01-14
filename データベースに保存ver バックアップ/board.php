@@ -61,15 +61,11 @@ if( $file_handle = fopen( FILENAME,'r') ) {
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="board.css">
+<script src="jquery-3.4.1.js"></script>
+<script src="langc.js"></script>
 </head>
-<ul>
-        <li><a href="rakurakupg.html">ホーム</a></li>
-        <li><a href="langc.html">C言語</a></li>
-        <li><a href="#contact">操作説明</a></li>
-        <li><a class="active" href="board.php">掲示板</a></li>
-</ul>
-
 <body>
+	<div id="header"></div>
 <h1>掲示板</h1>
 <?php if( !empty($success_message) ): ?>
     <p class="success_message"><?php echo $success_message; ?></p>

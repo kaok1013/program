@@ -57,7 +57,7 @@ $(function() {
         $('#pro').html(response);
       });
 
-      //線を引く
+      // 線を引く
       const leadlist = document.getElementsByClassName('lead-line-list');
       console.log(leadlist);
       if (leadlist.length == 3) {
