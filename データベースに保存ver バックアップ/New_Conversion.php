@@ -19,7 +19,7 @@ function Pre_Conv($module, $string){
     $flag = 0;
     $Stack_i = array();
     
-    for($i = 0, $j = 0 ; $i < 10 ; $i++){
+    for($i = 0, $j = 0 ; $i<100 ; $i++){
             
         if(empty($module[$i][$j])){
             continue;

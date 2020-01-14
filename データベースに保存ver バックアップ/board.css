@@ -2,8 +2,8 @@ body {
   margin: 0px;
   padding: 0px;
   font-size: 100%;
-  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ",
-    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ',
+    Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
   color: #222;
   background: #f7f7f7;
 }
@@ -51,7 +51,7 @@ label {
   margin-bottom: 7px;
   font-size: 86%;
 }
-input[type="text"],
+input[type='text'],
 textarea {
   margin-bottom: 20px;
   padding: 10px;
@@ -60,7 +60,7 @@ textarea {
   border-radius: 3px;
   background: #fff;
 }
-input[type="text"] {
+input[type='text'] {
   width: 200px;
 }
 textarea {
@@ -68,7 +68,7 @@ textarea {
   max-width: 50%;
   height: 70px;
 }
-input[type="submit"] {
+input[type='submit'] {
   appearance: none;
   -webkit-appearance: none;
   padding: 10px 20px;
@@ -80,7 +80,7 @@ input[type="submit"] {
   border-radius: 5px;
   background-color: #37a1e5;
 }
-input[type="submit"]:hover,
+input[type='submit']:hover,
 button:hover {
   background-color: #2392d8;
 }
@@ -127,7 +127,7 @@ article.reply::before {
   top: -10px;
   left: 20px;
   display: block;
-  content: "";
+  content: '';
   border-top: none;
   border-left: 7px solid #f7f7f7;
   border-right: 7px solid #f7f7f7;
@@ -157,7 +157,7 @@ article p {
   body {
     padding: 30px 5%;
   }
-  input[type="text"] {
+  input[type='text'] {
     width: 100%;
   }
   textarea {

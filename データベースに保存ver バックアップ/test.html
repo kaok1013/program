@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Sortable - Default functionality</title>
+    <link
+      rel="stylesheet"
+      href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css"
+    />
+    <meta
+      name="description"
+      content="Web上でフローチャートを用いて簡単にプログラミングができます"
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="jquery-3.4.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <script src="leader-line/leader-line.min.js"></script>
+    <script src="jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
+    <script src="jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
+    <script src="test.js"></script>
+
+    <style>
+      #sortable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 60%;
+      }
+      #sortable svg {
+        margin: 0 3px 3px 3px;
+        padding: 0.4em;
+        padding-left: 1.5em;
+        font-size: 1.4em;
+        height: 18px;
+      }
+      #sort {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sortable">
+      <svg
+        class="start toolclass"
+        title="開始"
+        id="1"
+        name="num_date"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        viewBox="-0.5 -0.5 1280 720"
+      >
+        <defs />
+        <g>
+          <ellipse
+            cx="641"
+            cy="361"
+            rx="640"
+            ry="360"
+            stroke-width="4"
+            pointer-events="none"
+            fill-opacity="0.85"
+            stroke-opacity="0.9"
+          />
+        </g>
+      </svg>
+      <br />
+      <br />
+      <svg
+        class="end toolclass"
+        title="終了"
+        id="2"
+        name="num_date"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        viewBox="-0.5 -0.5 1280 720"
+      >
+        <defs />
+        <g>
+          <path
+            d="M 392.84 1 L 889.16 1 C 1105.57 1 1281 162.18 1281 361 C 1281 559.82 1105.57 721 889.16 721 L 392.84 721 C 176.43 721 1 559.82 1 361 C 1 162.18 176.43 1 392.84 1 Z"
+            stroke-width="4"
+            stroke-miterlimit="10"
+            pointer-events="none"
+            fill-opacity="0.85"
+            stroke-opacity="0.9"
+          />
+        </g>
+      </svg>
+    </div>
+    <div id="sort"></div>
+    <div class="stage" style="width: 400px; height: 100px;">
+      <div
+        id="ex-050-0"
+        class="test"
+        style="width: 100px; height: 100px; left: 0; top: 0; background-color: aqua;"
+      >
+        element-1
+      </div>
+      <br />
+      <br />
+      <br />
+      <div
+        id="ex-050-1"
+        class="test"
+        style="width: 100px; height: 100px; right: 0; bottom: 0; background-color: red;"
+      >
+        element-2
+      </div>
+      <br />
+      <br />
+      <div
+        id="ex-050-2"
+        style="width: 100px; height: 100px; right: 0; bottom: 0; background-color: purple;"
+      >
+        element-3
+      </div>
+    </div>
+    <script>
+      window.addEventListener('load', function() {
+        'use strict';
+        const hig = document.getElementsByClassName('test');
+        console.log(hig);
+        new LeaderLine(hig[0], hig[1]);
+        new LeaderLine(
+          document.getElementById('ex-050-1'),
+          document.getElementById('ex-050-2'),
+        );
+      });
+    </script>
+  </body>
+</html>
