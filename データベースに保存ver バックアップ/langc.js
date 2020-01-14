@@ -1,3 +1,7 @@
+/* 共通部分のHTMLファイルの読み込み */
+$(function header() {
+  $('#header').load('header.html');
+});
 /* eslint-disable linebreak-style */
 // 保存する二次元配列sortitem.識別子conlist.条件式
 const sortitem = new Array(8).fill(null).map(() => new Array(5).fill(null));
@@ -41,13 +45,13 @@ $(function() {
         }
       }
       $.ajax({
-        //POST通信
+        // POST通信
         type: 'POST',
         data: {
           module: sortitem,
           string: conlist,
         },
-        //ここでデータの送信先URLを指定します。
+        // ここでデータの送信先URLを指定します。
         url: 'New_Conversion.php',
       }).done(function(response) {
         $('#pro').html(response);
@@ -126,13 +130,13 @@ $(function() {
                     }
                   }
                   $.ajax({
-                    //POST通信
+                    // POST通信
                     type: 'POST',
                     data: {
                       module: sortitem,
                       string: conlist,
                     },
-                    //ここでデータの送信先URLを指定します。
+                    // ここでデータの送信先URLを指定します。
                     url: 'New_Conversion.php',
                   }).done(function(response) {
                     $('#pro').html(response);
@@ -180,13 +184,13 @@ $(function() {
             console.log(conlist);
             console.log(sortitem);
             $.ajax({
-              //POST通信
+              // POST通信
               type: 'POST',
               data: {
                 module: sortitem,
                 string: conlist,
               },
-              //ここでデータの送信先URLを指定します。
+              // ここでデータの送信先URLを指定します。
               url: 'New_Conversion.php',
             }).done(function(response) {
               $('#pro').html(response);
