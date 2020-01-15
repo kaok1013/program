@@ -2,6 +2,7 @@
 $(function header() {
   $('#header').load('header.html');
 });
+
 /* eslint-disable linebreak-style */
 // 保存する二次元配列sortitem.識別子conlist.条件式
 const sortitem = new Array(15).fill(null).map(() => new Array(5).fill(null));
@@ -45,26 +46,41 @@ $(function() {
         }
       }
       $.ajax({
-        // POST通信
+        //POST通信
         type: 'POST',
         data: {
           module: sortitem,
           string: conlist,
         },
-        // ここでデータの送信先URLを指定します。
+        //ここでデータの送信先URLを指定します。
         url: 'New_Conversion.php',
       }).done(function(response) {
         $('#pro').html(response);
       });
 
-      // 線を引く
+      //線を引く
       const leadlist = document.getElementsByClassName('lead-line-list');
-      console.log(leadlist);
-      if (leadlist.length == 3) {
-        removeline.remove();
+      for (let i = 0; i < leadlist.length; i++) {
+        if (leadlist[i].getAttribute('id') == '8') {
+          console.log('Test');
+        }
       }
+      console.log(leadlist);
+      if (leadlist.length >= 3) {
+        $('.leader-line').remove();
+      }
+      var linearray = new Array(leadlist.length - 1);
       for (let i = 0; i < leadlist.length - 1; i++) {
-        removeline = new LeaderLine(leadlist[i], leadlist[i + 1]);
+        linearray[i] = new LeaderLine(leadlist[i], leadlist[i + 1]);
+      }
+      for (let i = 0; i < linearray.length; i++) {
+        document.getElementById('tableid').addEventListener(
+          'scroll',
+          AnimEvent.add(function() {
+            linearray[i].position();
+          }),
+          false,
+        );
       }
     },
     remove: function() {
@@ -152,13 +168,13 @@ $(function() {
                     }
                   }
                   $.ajax({
-                    // POST通信
+                    //POST通信
                     type: 'POST',
                     data: {
                       module: sortitem,
                       string: conlist,
                     },
-                    // ここでデータの送信先URLを指定します。
+                    //ここでデータの送信先URLを指定します。
                     url: 'New_Conversion.php',
                   }).done(function(response) {
                     $('#pro').html(response);
@@ -204,13 +220,13 @@ $(function() {
               }
             }
             $.ajax({
-              // POST通信
+              //POST通信
               type: 'POST',
               data: {
                 module: sortitem,
                 string: conlist,
               },
-              // ここでデータの送信先URLを指定します。
+              //ここでデータの送信先URLを指定します。
               url: 'New_Conversion.php',
             }).done(function(response) {
               $('#pro').html(response);
