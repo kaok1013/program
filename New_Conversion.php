@@ -76,7 +76,7 @@ function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
         $start_j++;
     
         if($i == 10){
-            print($flag.", 分岐先なし<br>");
+            print("分岐先がありません");
             return --$flag;
         }
     }

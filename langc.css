@@ -113,3 +113,9 @@ main {
 .elsedecision {
   fill: chocolate;
 }
+
+#wrapper {
+  width: 0;
+  height: 0;
+  position: relative; /* Origin of coordinates for lines, and scrolled content (i.e. not `absolute`) */
+}
