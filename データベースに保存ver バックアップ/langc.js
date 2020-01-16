@@ -59,21 +59,71 @@ $(function() {
       });
 
       //線を引く
-      const leadlist = document.getElementsByClassName('lead-line-list');
-      for (let i = 0; i < leadlist.length; i++) {
-        if (leadlist[i].getAttribute('id') == '8') {
-          console.log('Test');
+      const leadlist = new Array(15)
+        .fill(null)
+        .map(() => new Array(5).fill(null));
+      let cnt = 0;
+      for (let i = 0; i < 15; i++) {
+        for (let j = 0; j < 5; j++) {
+          subid = 'table' + i + '_' + j;
+          $('#' + subid)
+            .has('svg')
+            .each(function() {
+              const svElement = document.getElementById(subid);
+              leadlist[i][j] = svElement.firstElementChild;
+              cnt += 1;
+            });
         }
       }
       console.log(leadlist);
-      if (leadlist.length >= 3) {
+
+      const linearray = new Array(500).fill(null);
+      if (cnt >= 2) {
         $('.leader-line').remove();
       }
-      var linearray = new Array(leadlist.length - 1);
-      for (let i = 0; i < leadlist.length - 1; i++) {
-        linearray[i] = new LeaderLine(leadlist[i], leadlist[i + 1]);
+      let linecnt = 0;
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 15; j++) {
+          if (leadlist[j][i] != null) {
+            for (let z = j + 1; z < 15; z++) {
+              if (leadlist[z][i] != null) {
+                linearray[linecnt] = new LeaderLine(
+                  leadlist[j][i],
+                  leadlist[z][i],
+                );
+                linecnt += 1;
+                break;
+              }
+            }
+          }
+        }
       }
-      for (let i = 0; i < linearray.length; i++) {
+      for (let i = 0; i < 15; i++) {
+        for (let j = 0; j < 5; j++) {
+          if (
+            (sortitem[i][j] == '8' || sortitem[i][j] == '9') &&
+            leadlist[i][j + 1] != null
+          ) {
+            linearray[linecnt] = new LeaderLine(
+              leadlist[i][j],
+              leadlist[i][j + 1],
+            );
+            linecnt += 1;
+          }
+          if (sortitem[i][j] == '10' && j >= 1) {
+            for (let g = i + 1; g < 15; g++) {
+              if (sortitem[g][j - 1] == '11') {
+                linearray[linecnt] = new LeaderLine(
+                  leadlist[i][j],
+                  leadlist[g][j - 1],
+                );
+                linecnt += 1;
+              }
+            }
+          }
+        }
+      }
+      for (let i = 0; i < linecnt; i++) {
         document.getElementById('tableid').addEventListener(
           'scroll',
           AnimEvent.add(function() {
