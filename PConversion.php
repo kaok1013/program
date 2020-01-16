@@ -19,7 +19,7 @@ function Pre_Conv($module, $string){
     $flag = 0;
     $Stack_i = array();
     
-    for($i = 0, $j = 0 ; $i < 10 ; $i++){
+    for($i = 0, $j = 0 ; $i < 100 ; $i++){
             
         if(empty($module[$i][$j])){
             continue;
@@ -81,12 +81,12 @@ function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
         }
     }
     
-    if($module[$start_i][$start_j] != 9){       //分岐先がelseifでない場合
+    if($module[$start_i][$start_j] != 9 && $module[$start_i][$start_j] != 15){       //分岐先がelseifでない場合
         /* test  print("分岐先がelseifでない<br>"); */
         return --$flag;
     }
     
-    for($i = $start_i, $j = $start_j ; $module[$i][$j] != 2 && $end_i != $i ; $i++){
+    for($i = $start_i, $j = $start_j ; $end_i >= $i ; $i++){
         /*test--
         print($i." : ".$j."<br>");
         --test*/
@@ -114,6 +114,9 @@ function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
             print("pcb<br>");
             --test*/
             $flag = Pre_Conv_branch($start_i, $j+1, $flag+1, $i, $module, $string);
+        }
+        if($module[$i][$j] == 2 ){
+            break;
         }    
     }
         return $flag;
@@ -181,6 +184,7 @@ function Conversion($count, $flag, $Array_module, $Array_string){      //変換�
                     print($tab);
                 }
                 print("break;");
+                break;
                 
 
             case  8:        //if
@@ -204,7 +208,7 @@ function Conversion($count, $flag, $Array_module, $Array_string){      //変換�
                 for ($j = $count ; $j > 0 ; $j--){
                     print($tab);
                 }
-                print("}".'<br />');
+                print('<br />');
                 break;
 
             case 11:        //分岐終了
@@ -222,13 +226,21 @@ function Conversion($count, $flag, $Array_module, $Array_string){      //変換�
                 for ($j = $count ; $j > 0 ; $j--){
                     print($tab);
                 }
-                print("print(".$Array_string[$tmp_flag][$i].");");
+                print("print(".$Array_string[$tmp_flag][$i].")");
                 print('<br />');
                 break;
     
             case 14:        //改行
                 print('<br />');
                 break;
+
+            case 15:
+                for ($j = $count ; $j > 0 ; $j--){
+                    print($tab);
+                }
+                $count++;
+                print("else:".'<br />');
+                break; 
 
             default :
                 print("ERR");
