@@ -64,8 +64,9 @@ if( $file_handle = fopen( FILENAME,'r') ) {
 <script src="jquery-3.4.1.min.js"></script>
 <script src="langc.js"></script>
 </head>
+<div id="header"></div>
+
 <body>
-	<div id="header"></div>
 <h1>掲示板</h1>
 <?php if( !empty($success_message) ): ?>
     <p class="success_message"><?php echo $success_message; ?></p>
