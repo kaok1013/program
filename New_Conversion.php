@@ -21,15 +21,15 @@ function Pre_Conv($module, $string){
     
     for($i = 0, $j = 0 ; $i<100 ; $i++){
             
-        if(empty($module[$i][$j])){
+        if(empty($module[$i][$j])){     //空ならスキップ
             continue;
         }
     
-        if($module[$i][$j] == 8){
+        if($module[$i][$j] == 8){       //ifならスタック（分岐のため）
             $Stack_i[] = $i;
         }
     
-        if($module[$i][$j] == 11){
+        if($module[$i][$j] == 11){      //分岐収束ならスタックから分岐先を探す
             $start_i = array_pop($Stack_i);
             /*test--
             print("pc<br>");
@@ -43,7 +43,7 @@ function Pre_Conv($module, $string){
         $Array_module[$j][] = $module[$i][$j];
         $Array_string[$j][] = $string[$i][$j];
     
-        if($module[$i][$j] == 2){
+        if($module[$i][$j] == 2){   
             break;
         }    
     }
@@ -81,12 +81,12 @@ function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
         }
     }
     
-    if($module[$start_i][$start_j] != 9){       //分岐先がelseifでない場合
+    if($module[$start_i][$start_j] != 9 && $module[$start_i][$start_j] != 15){       //分岐先がelseif || elseでない場合
         /* test  print("分岐先がelseifでない<br>"); */
         return --$flag;
     }
     
-    for($i = $start_i, $j = $start_j ; $module[$i][$j] != 2 && $end_i != $i ; $i++){
+    for($i = $start_i, $j = $start_j ; $end_i >= $i ; $i++){
         /*test--
         print($i." : ".$j."<br>");
         --test*/
@@ -114,6 +114,9 @@ function Pre_Conv_branch($start_i, $start_j, $flag, $end_i, $module, $string){
             print("pcb<br>");
             --test*/
             $flag = Pre_Conv_branch($start_i, $j+1, $flag+1, $i, $module, $string);
+        }
+        if($module[$i][$j] == 2 ){
+            break;
         }    
     }
         return $flag;
@@ -229,6 +232,15 @@ function Conversion($count, $flag, $Array_module, $Array_string){      //変換�
             case 14:        //改行
                 print('<br />');
                 break;
+
+            case 15:
+                for ($j = $count ; $j > 0 ; $j--){
+                    print($tab);
+                }
+                print("else{<br>");
+                $count++;
+                break;
+
 
             default :
                 print("ERR");
