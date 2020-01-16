@@ -61,7 +61,7 @@ if( $file_handle = fopen( FILENAME,'r') ) {
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="board.css">
-<script src="jquery-3.4.1.js"></script>
+<script src="jquery-3.4.1.min.js"></script>
 <script src="langc.js"></script>
 </head>
 <body>

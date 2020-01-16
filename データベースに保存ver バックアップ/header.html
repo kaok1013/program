@@ -1,6 +1,16 @@
 ﻿<ul>
-  <li><a class="active" href="rakurakupg.html">ホーム</a></li>
-  <li><a href="langc.html">C言語</a></li>
-  <li><a href="#contact">操作説明</a></li>
-  <li><a href="board.php">掲示板</a></li>
+  <li><a class="menu" href="rakurakupg.html">ホーム</a></li>
+  <li><a class="menu" href="langc.html">C言語</a></li>
+  <li><a class="menu" href="#contact">操作説明</a></li>
+  <li><a class="menu" href="board.php">掲示板</a></li>
 </ul>
+<script>
+  let activePage = location.pathname;
+  const headerClass = document.querySelectorAll('.menu');
+  activePage = activePage.split('/');
+  for (let i = 0; i < headerClass.length; i++) {
+    if (activePage[2] === headerClass[i].getAttribute('href')) {
+      headerClass[i].classList.add('active');
+    }
+  }
+</script>
