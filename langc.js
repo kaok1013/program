@@ -46,19 +46,19 @@ $(function() {
         }
       }
       $.ajax({
-        //POST通信
+        // POST通信
         type: 'POST',
         data: {
           module: sortitem,
           string: conlist,
         },
-        //ここでデータの送信先URLを指定します。
+        // ここでデータの送信先URLを指定します。
         url: 'New_Conversion.php',
       }).done(function(response) {
         $('#pro').html(response);
       });
 
-      //線を引く
+      // 線を引く
       const leadlist = new Array(15)
         .fill(null)
         .map(() => new Array(5).fill(null));
@@ -218,13 +218,13 @@ $(function() {
                     }
                   }
                   $.ajax({
-                    //POST通信
+                    // POST通信
                     type: 'POST',
                     data: {
                       module: sortitem,
                       string: conlist,
                     },
-                    //ここでデータの送信先URLを指定します。
+                    // ここでデータの送信先URLを指定します。
                     url: 'New_Conversion.php',
                   }).done(function(response) {
                     $('#pro').html(response);
@@ -270,13 +270,13 @@ $(function() {
               }
             }
             $.ajax({
-              //POST通信
+              // POST通信
               type: 'POST',
               data: {
                 module: sortitem,
                 string: conlist,
               },
-              //ここでデータの送信先URLを指定します。
+              // ここでデータの送信先URLを指定します。
               url: 'New_Conversion.php',
             }).done(function(response) {
               $('#pro').html(response);
