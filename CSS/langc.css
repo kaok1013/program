@@ -36,11 +36,15 @@ main {
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
+table {
+  height: 49rem;
+}
 .side {
   padding: 5px;
   display: flex;
   overflow: auto;
   margin: 1rem;
+  height: 50rem;
   border-radius: 10px;
   justify-content: space-evenly;
 }

@@ -18,16 +18,19 @@
       rel="stylesheet"
       href="jQuery-contextMenu/dist/jquery.contextMenu.min.css"
     />
-    <link rel="stylesheet" href="langc.css" type="text/css" />
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css" />
-    <link rel="stylesheet" href="header.css" type="text/css" />
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="jquery-ui.js"></script>
+    <link rel="stylesheet" href="CSS/introjs.min.css" />
+    <link rel="stylesheet" href="CSS/langc.css" type="text/css" />
+    <link rel="stylesheet" href="CSS/header.css" type="text/css" />
+    <script src="Javascript/jquery-3.4.1.min.js"></script>
+    <script src="Javascript/jquery-ui.js"></script>
     <script src="jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
     <script src="jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
     <script src="leader-line/leader-line.min.js"></script>
-    <script src="anim-event.min.js"></script>
-    <script src="langc.js"></script>
+    <script src="Javascript/anim-event.min.js"></script>
+    <script src="Javascript/intro.min.js"></script>
+    <script src="Javascript/langc.js"></script>
+    <!-- Intro.js - Copyright (C) 2012-2017 Afshin Mehrabani (afshin.meh@gmail.com) -->
     <title>C言語</title>
   </head>
 
@@ -37,9 +40,22 @@
       <div class="flowchart side2">
         <main>
           <div class="side" id="tableid"><div id="wrapper"></div></div>
+          <div
+            data-intro="ここに置きます"
+            data-step="3"
+            class="side"
+            id="tableid"
+          ></div>
 
-          <div class="side dragArea" id="sort">
+          <div
+            data-intro="フローチャートは,まず起点となる部分が必要です"
+            data-step="1"
+            class="side dragArea"
+            id="sort"
+          >
             <svg
+              data-intro="コレを"
+              data-step="2"
               class="start toolclass"
               title="開始"
               id="1"
