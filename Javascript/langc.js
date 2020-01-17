@@ -123,13 +123,6 @@ $(function() {
         }
       }
       for (let i = 0; i < linecnt; i++) {
-        document.getElementById('flowid').addEventListener(
-          'scroll',
-          AnimEvent.add(function() {
-            linearray[i].position();
-          }),
-          false,
-        );
         document.getElementById('tableid').addEventListener(
           'scroll',
           AnimEvent.add(function() {
