@@ -83,6 +83,7 @@ $(function() {
       }
       const elmWrapper = document.getElementById('wrapper');
       const rectWrapper = elmWrapper.getBoundingClientRect();
+      console.log(rectWrapper);
       let linecnt = 0;
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 15; j++) {
