@@ -130,6 +130,13 @@ $(function() {
           }),
           false,
         );
+        document.getElementById('flowid').addEventListener(
+          'scroll',
+          AnimEvent.add(function() {
+            linearray[i].position();
+          }),
+          false,
+        );
       }
     },
     remove: function() {
