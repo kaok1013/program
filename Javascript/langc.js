@@ -77,13 +77,9 @@ $(function() {
       }
 
       const linearray = new Array(500).fill(null);
-      const elmline = new Array(500).fill(null);
       if (cnt >= 2) {
         $('.leader-line').remove();
       }
-      const elmWrapper = document.getElementById('wrapper');
-      const rectWrapper = elmWrapper.getBoundingClientRect();
-      console.log(rectWrapper);
       let linecnt = 0;
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 15; j++) {
@@ -93,9 +89,6 @@ $(function() {
                 linearray[linecnt] = new LeaderLine(
                   leadlist[j][i],
                   leadlist[z][i],
-                );
-                elmline[linecnt] = document.querySelector(
-                  '.leader-line:last-of-type',
                 );
                 linecnt += 1;
                 break;
@@ -114,9 +107,6 @@ $(function() {
               leadlist[i][j],
               leadlist[i][j + 1],
             );
-            elmline[linecnt] = document.querySelector(
-              '.leader-line:last-of-type',
-            );
             linecnt += 1;
           }
           if (sortitem[i][j] == '10' && j >= 1) {
@@ -126,23 +116,20 @@ $(function() {
                   leadlist[i][j],
                   leadlist[g][j - 1],
                 );
-                elmline[linecnt] = document.querySelector(
-                  '.leader-line:last-of-type',
-                );
                 linecnt += 1;
               }
             }
           }
         }
       }
-      elmWrapper.style.transform =
-        'translate(-' +
-        (rectWrapper.left + pageXOffset) +
-        'px, -' +
-        (rectWrapper.top + pageYOffset) +
-        'px)';
-      for (let n = 0; n < linecnt; n++) {
-        elmWrapper.appendChild(elmline[n]);
+      for (let i = 0; i < linecnt; i++) {
+        document.getElementById('flowid').addEventListener(
+          'scroll',
+          AnimEvent.add(function() {
+            linearray[i].position();
+          }),
+          false,
+        );
       }
     },
     remove: function() {
@@ -159,6 +146,7 @@ $(function() {
         }
       }
     },
+
     receive: function() {
       const con = $(this).attr('id');
       const i = con.substr(5, 1);

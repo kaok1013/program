@@ -75,7 +75,6 @@ $(function() {
             });
         }
       }
-      console.log(leadlist);
 
       const linearray = new Array(500).fill(null);
       if (cnt >= 2) {
