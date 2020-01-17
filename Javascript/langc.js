@@ -130,6 +130,13 @@ $(function() {
           }),
           false,
         );
+        document.getElementById('tableid').addEventListener(
+          'scroll',
+          AnimEvent.add(function() {
+            linearray[i].position();
+          }),
+          false,
+        );
       }
     },
     remove: function() {
