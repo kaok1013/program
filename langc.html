@@ -37,21 +37,20 @@
   <body>
     <div id="header"></div>
     <div class="all">
-      <div class="flowchart side2">
+      <div
+        class="flowchart side2"
+        data-intro="フローチャートは,まず起点となる部分が必要です"
+        data-step="1"
+      >
         <main>
           <div
-            data-intro="ここに置きます"
-            data-step="3"
             class="side"
             id="tableid"
+            data-intro="ここに置きます"
+            data-step="3"
           ></div>
 
-          <div
-            data-intro="フローチャートは,まず起点となる部分が必要です"
-            data-step="1"
-            class="side dragArea"
-            id="sort"
-          >
+          <div class="side dragArea" id="sort">
             <svg
               data-intro="コレを"
               data-step="2"
@@ -344,7 +343,12 @@
         </main>
       </div>
 
-      <div class="program side2" id="pro"></div>
+      <div
+        class="program side2"
+        id="pro"
+        data-intro="すると,ここに置いた記号に合わせたコードが表示されます"
+        data-step="4"
+      ></div>
     </div>
   </body>
 </html>
