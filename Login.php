@@ -48,6 +48,7 @@ if (isset($_POST["login"])) {
                         $row['name'];  // ユーザー名
                     }
                     $_SESSION["NAME"] = $row['name'];
+                    $user_id = $_SESSION['NAME'];
                     header("Location: rakurakupg.html");  // メイン画面へ遷移
                     exit();  // 処理終了
                 } else {
@@ -78,16 +79,8 @@ if (isset($_POST["login"])) {
         <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
     	<input type="text" id="userid" name="userid" placeholder="ユーザー名を入力" />
         <input type="password" id="password " name="password" placeholder="パスワードを入力" />
-        <button type="submit" id="login" name="login" class="btn btn-primary btn-block btn-large" onclick="idsend()">サインイン</button>
+        <button type="submit" id="login" name="login" class="btn btn-primary btn-block btn-large">サインイン</button>
     </form>
-    <script>
-        function idsend() {
-            var name = "<?php echo $_SESSION['NAME']; ?>";
-            name = name.replace(/\s+/g, "");
-            console.log(name);
-            //ここにajaxかく
-        }
-    </script>
     <form action="SignUp.php" >
                 
         

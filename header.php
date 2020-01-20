@@ -1,4 +1,4 @@
-<ul>
+﻿<ul>
   <li><a class="menu" href="rakurakupg.html">ホーム</a></li>
   <li><a class="menu" href="langc.html">C言語</a></li>
   <li><a class="menu" href="langpython.html">Python</a></li>
@@ -8,7 +8,9 @@
   <li><a class="menu" href="board.php">掲示板</a></li>
   <li>
     <a class="menu right" href="Login.php">
-      <?php echo htmlspecialchars($user_id, ENT_QUOTES, 'UTF-8');?>
+      <?php
+      $user_id="サインイン";
+      echo htmlspecialchars($user_id, ENT_QUOTES, 'UTF-8');?>
     </a>
   </li>
 </ul>
@@ -21,21 +23,5 @@
         headerClass[i].classList.add('active');
       }
     }
-    //ajax
-    $.ajax({
-      async: true,
-      // POST通信
-      type: 'POST',
-      // ここでデータの受信先URLを指定します。
-      url: 'Login.php',
-      dataType: 'json',
-    })
-      .done(function(data) {
-        console.log(data.idname);
-      })
-      .fail(function(data) {
-        console.log(data.idname);
-        console.log('失敗');
-      });
   </script>
 </div>
