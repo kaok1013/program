@@ -72,10 +72,11 @@ if (isset($_POST["login"])) {
 <link rel="stylesheet" href="Login.css"  />
 
 <div class="login">
-	<h1>サインイン</h1>
+    <h1>サインイン</h1>
     <form method="post">
-    	<input type="text" id="userid" name="userid" placeholder="ユーザー名を入力" required="required" />
-        <input type="password" id="password " name="password" placeholder="パスワードを入力" required="required" />
+        <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
+    	<input type="text" id="userid" name="userid" placeholder="ユーザー名を入力" />
+        <input type="password" id="password " name="password" placeholder="パスワードを入力" />
         <button type="submit" id="login" name="login" class="btn btn-primary btn-block btn-large">サインイン</button>
     </form>
     <form action="SignUp.php" >
