@@ -110,7 +110,7 @@ $(function() {
             linecnt += 1;
           }
           if (sortitem[i][j] == '10' && j >= 1) {
-            for (let g = i + 1; g < 15; g++) {
+            for (let g = i + 1; g < i + 2; g++) {
               if (sortitem[g][j - 1] == '11') {
                 linearray[linecnt] = new LeaderLine(
                   leadlist[i][j],
@@ -288,6 +288,87 @@ $(function() {
             }).done(function(response) {
               $('#pro').html(response);
             });
+
+            // 線を引く
+            const leadlist = new Array(15)
+              .fill(null)
+              .map(() => new Array(5).fill(null));
+            let cnt = 0;
+            for (let i = 0; i < 15; i++) {
+              for (let j = 0; j < 5; j++) {
+                subid = 'table' + i + '_' + j;
+                $('#' + subid)
+                  .has('svg')
+                  .each(function() {
+                    const svElement = document.getElementById(subid);
+                    leadlist[i][j] = svElement.firstElementChild;
+                    cnt += 1;
+                  });
+              }
+            }
+
+            const linearray = new Array(500).fill(null);
+            if (cnt >= 1) {
+              $('.leader-line').remove();
+            }
+            let linecnt = 0;
+            for (let i = 0; i < 5; i++) {
+              for (let j = 0; j < 15; j++) {
+                if (leadlist[j][i] != null) {
+                  for (let z = j + 1; z < 15; z++) {
+                    if (leadlist[z][i] != null) {
+                      linearray[linecnt] = new LeaderLine(
+                        leadlist[j][i],
+                        leadlist[z][i],
+                      );
+                      linecnt += 1;
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+            for (let i = 0; i < 15; i++) {
+              for (let j = 0; j < 5; j++) {
+                if (
+                  (sortitem[i][j] == '8' || sortitem[i][j] == '9') &&
+                  leadlist[i][j + 1] != null
+                ) {
+                  linearray[linecnt] = new LeaderLine(
+                    leadlist[i][j],
+                    leadlist[i][j + 1],
+                  );
+                  linecnt += 1;
+                }
+                if (sortitem[i][j] == '10' && j >= 1) {
+                  for (let g = i + 1; g < i + 2; g++) {
+                    if (sortitem[g][j - 1] == '11') {
+                      linearray[linecnt] = new LeaderLine(
+                        leadlist[i][j],
+                        leadlist[g][j - 1],
+                      );
+                      linecnt += 1;
+                    }
+                  }
+                }
+              }
+            }
+            for (let i = 0; i < linecnt; i++) {
+              document.getElementById('tableid').addEventListener(
+                'scroll',
+                AnimEvent.add(function() {
+                  linearray[i].position();
+                }),
+                false,
+              );
+              document.getElementById('flowid').addEventListener(
+                'scroll',
+                AnimEvent.add(function() {
+                  linearray[i].position();
+                }),
+                false,
+              );
+            }
           }
         },
       },
