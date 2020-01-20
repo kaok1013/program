@@ -6,7 +6,7 @@ ul {
   overflow: hidden;
   background-color: #1b2538;
 }
-li {
+.menu {
   float: left;
   border-right: 1px solid #bbbbbb;
 }
@@ -25,4 +25,8 @@ li a:hover:not(.active) {
 }
 .active {
   background-color: #da3c41;
+}
+
+.right {
+  float: right;
 }
