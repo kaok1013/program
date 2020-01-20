@@ -84,7 +84,7 @@ if (isset($_POST["login"])) {
         <input type="submit" value="新規登録" class="btn btn-primary btn-block btn-large"></>
             
     </form>
-        <form action="Pre_Conv(test).php">
+        <form action="rakurakupg.html">
         <!-- ここは適当に作ってます>
             actionには登録しない場合のページを入れる
         <!-->
