@@ -48,7 +48,15 @@ if (isset($_POST["login"])) {
                         $row['name'];  // ユーザー名
                     }
                     $_SESSION["NAME"] = $row['name'];
-                    $user_id = $_SESSION['NAME'];
+                    ?>
+                    <script type="text/javascript">
+                        function send_name(){
+                            var name = <?php echo json_encode($_SESSION["NAME"]); ?>;
+                            
+                        }
+                    </script>
+                    <?php
+                    print "<script language=javascript>send_name()</script>";
                     header("Location: rakurakupg.html");  // メイン画面へ遷移
                     exit();  // 処理終了
                 } else {
