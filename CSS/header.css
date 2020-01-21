@@ -1,5 +1,5 @@
 /*メニューバー*/
-ul {
+#header > ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ ul {
 li:last-child {
   border-right: none;
 }
-li a {
+#header li a {
   display: block;
   color: white;
   text-align: center;

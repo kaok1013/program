@@ -19,7 +19,7 @@
       href="jQuery-contextMenu/dist/jquery.contextMenu.min.css"
     />
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css" />
-    <link rel="stylesheet" href="CSS/introjs.min.css" />
+    <link rel="stylesheet" href="CSS/introjs.min.css" type="text/css" />
     <link rel="stylesheet" href="CSS/langc.css" type="text/css" />
     <link rel="stylesheet" href="CSS/header.css" type="text/css" />
     <script src="Javascript/jquery-3.4.1.min.js"></script>
@@ -36,7 +36,11 @@
 
   <body>
     <div id="header"></div>
-    <div class="all">
+    <div
+      class="all"
+      data-intro="一つの枠内には一つの記号しか置けません.さあ,作ってみましょう!"
+      data-step="5"
+    >
       <div
         class="flowchart side2"
         id="flowid"
@@ -44,12 +48,7 @@
         data-step="1"
       >
         <main>
-          <div
-            class="side"
-            id="tableid"
-            data-intro="ここに置きます"
-            data-step="3"
-          >
+          <div class="side" id="tableid">
             <div id="wrapper"></div>
           </div>
 

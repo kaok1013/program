@@ -39,6 +39,9 @@ main {
 table {
   height: 49rem;
 }
+td {
+  border: solid 1px cornflowerblue;
+}
 .side {
   padding: 5px;
   display: flex;

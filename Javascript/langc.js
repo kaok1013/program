@@ -22,6 +22,8 @@ $(function() {
     }
   }
   $('#tableid').append(tableJQ);
+  $('#table0_0').attr('data-intro', 'ここに置きます');
+  $('#table0_0').attr('data-step', '3');
 });
 $(function() {
   // ソート
