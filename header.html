@@ -1,39 +1,50 @@
-<ul>
-  <li><a class="menu" href="rakurakupg.html">ホーム</a></li>
-  <li><a class="menu" href="langc.html">C言語</a></li>
-  <li><a class="menu" href="langpython.html">Python</a></li>
-  <li>
-    <a class="menu" href="#tutorial" onclick="introJs().start()">操作説明</a>
-  </li>
-  <li><a class="menu" href="board.php">掲示板</a></li>
-  <li>
-    <a class="menu right" href="Login.php">サインイン</a>
-  </li>
-</ul>
-  <script>
-    let activePage = location.pathname;
-    const headerClass = document.querySelectorAll('.menu');
-    activePage = activePage.split('/');
-    for (let i = 0; i < headerClass.length; i++) {
-      if (activePage[2] === headerClass[i].getAttribute('href')) {
-        headerClass[i].classList.add('active');
+<div>
+  <a class="menu" href="rakurakupg.html">ホーム</a>
+</div>
+<div>
+  <a class="menu" href="langc.html">C言語</a>
+</div>
+<div>
+  <a class="menu" href="langpython.html">Python</a>
+</div>
+<div>
+  <a class="menu" href="#tutorial" oncdivck="introJs().start()">操作説明</a>
+</div>
+<div>
+  <a class="menu" href="board.php">掲示板</a>
+</div>
+<div>
+  <a class="menu" href="Login.php">サインイン</a>
+</div>
+<script>
+  /* 現在開いてるページのヘッダーを赤くする */
+  let activePage = location.pathname;
+  const headerClass = document.querySelectorAll('.menu');
+  activePage = activePage.split('/');
+  console.log(activePage);
+  console.log(headerClass);
+  for (let i = 0; i < activePage.length; i++) {
+    for (let j = 0; j < headerClass.length; j++) {
+      if (activePage[i] === headerClass[j].getAttribute('href')) {
+        headerClass[j].classList.add('active');
+        break;
       }
     }
-    //ajax
-    $.ajax({
-      async: true,
-      // POST通信
-      type: 'POST',
-      // ここでデータの受信先URLを指定します。
-      url: 'Login.php',
-      dataType: 'json',
+  }
+  // ajax
+  $.ajax({
+    async: true,
+    // POST通信
+    type: 'POST',
+    // ここでデータの受信先URLを指定します。
+    url: 'Login.php',
+    dataType: 'json',
+  })
+    .done(function(data) {
+      console.log(data.idname);
     })
-      .done(function(data) {
-        console.log(data.idname);
-      })
-      .fail(function(data) {
-        console.log(data.idname);
-        console.log('失敗');
-      });
-  </script>
-</div>
+    .fail(function(data) {
+      console.log(data.idname);
+      console.log('失敗');
+    });
+</script>
