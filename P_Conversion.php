@@ -131,7 +131,7 @@ function Conversion($count, $flag, $Array_module, $Array_string){      //変換�
         switch ($Array_module[$tmp_flag][$i]){        //変換処理
             
             case  1:         //開始
-                print("# -*- coding: utf-8 -*-<br>");
+                print("def main():<br>");
                 break;
 
             case  2:         //終了

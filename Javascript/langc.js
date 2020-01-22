@@ -206,7 +206,7 @@ $(function() {
           // 条件入力フォーム
           $('#input_form').dialog({
             modal: true, // モーダル
-            title: '入力フォーム(仮)',
+            title: '入力フォーム',
             width: 550,
             heighth: 550,
             buttons: {

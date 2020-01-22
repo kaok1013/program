@@ -1,29 +1,40 @@
-<ul>
-  <li><a class="menu" href="rakurakupg.html">ホーム</a></li>
-  <li><a class="menu" href="langc.html">C言語</a></li>
-  <li><a class="menu" href="langpython.html">Python</a></li>
-  <li>
-    <a class="menu" href="#tutorial" onclick="introJs().start()">操作説明</a>
-  </li>
-  <li><a class="menu" href="board.php">掲示板</a></li>
-  <li>
-    <a class="menu right" id = "Sign" href="Login.php">サインイン</a>
-  </li>
-</ul>
-  <script>
-    let activePage = location.pathname;
-    const headerClass = document.querySelectorAll('.menu');
-    activePage = activePage.split('/');
-    for (let i = 0; i < headerClass.length; i++) {
-      if (activePage[2] === headerClass[i].getAttribute('href')) {
-        headerClass[i].classList.add('active');
+<div>
+  <a class="menu" href="rakurakupg.html">ホーム</a>
+</div>
+<div>
+  <a class="menu" href="langc.html">C言語</a>
+</div>
+<div>
+  <a class="menu" href="langpython.html">Python</a>
+</div>
+<div>
+  <a class="menu" href="#tutorial" oncdivck="introJs().start()">操作説明</a>
+</div>
+<div>
+  <a class="menu" href="board.php">掲示板</a>
+</div>
+<div>
+  <a class="menu" id="Sign" href="Login.php">サインイン</a>
+</div>
+<script>
+  /* 現在開いてるページのヘッダーを赤くする */
+  let activePage = location.pathname;
+  const headerClass = document.querySelectorAll('.menu');
+  activePage = activePage.split('/');
+  console.log(activePage);
+  console.log(headerClass);
+  for (let i = 0; i < activePage.length; i++) {
+    for (let j = 0; j < headerClass.length; j++) {
+      if (activePage[i] === headerClass[j].getAttribute('href')) {
+        headerClass[j].classList.add('active');
+        break;
       }
     }
-      $.getJSON("data.json", function onLoad(data){
-        target = document.getElementById("Sign");
-        if(data){
-          target.innerHTML = data;
-        }
-      });
-  </script>
-</div>
+  }
+  $.getJSON('data.json', function onLoad(data) {
+    target = document.getElementById('Sign');
+    if (data) {
+      target.innerHTML = data;
+    }
+  });
+</script>
