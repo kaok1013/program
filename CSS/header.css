@@ -11,10 +11,9 @@
 #header div:first-of-type {
   border-left: none;
 }
-
 #header div a {
   display: block;
-  border-left: solid 1px #bbbbbb;
+  border-right: solid 1px #bbbbbb;
   color: white;
   text-align: center;
   padding: 14px 16px;
