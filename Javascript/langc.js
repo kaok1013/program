@@ -215,6 +215,7 @@ $(function() {
                 id: 'okbtnid',
                 click: function(event, ui) {
                   const conditions = document.forms.input_form.input1.value;
+                  document.inputform.reset();
                   const rend = 15; // 行
                   const cend = 5; // 列
                   for (let r = 0; r < rend; r++) {
