@@ -48,16 +48,13 @@ if (isset($_POST["login"])) {
                         $row['name'];  // ユーザー名
                     }
                     $_SESSION["NAME"] = $row['name'];
-                    ?>
-                    <script type="text/javascript">
-                        function send_name(){
-                            var name = <?php echo json_encode($_SESSION["NAME"]); ?>;
-                            
-                        }
-                    </script>
-                    <?php
-                    print "<script language=javascript>send_name()</script>";
+                    $sendname = $row['name'];
+                    
                     header("Location: rakurakupg.html");  // メイン画面へ遷移
+                    $jsonUrl = "data.json";
+                    $jsonData = json_encode($sendname);
+                    file_put_contents($jsonUrl, $jsonData);
+
                     exit();  // 処理終了
                 } else {
                     // 認証失敗

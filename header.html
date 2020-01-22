@@ -7,7 +7,7 @@
   </li>
   <li><a class="menu" href="board.php">掲示板</a></li>
   <li>
-    <a class="menu right" href="Login.php">サインイン</a>
+    <a class="menu right" id = "Sign" href="Login.php">サインイン</a>
   </li>
 </ul>
   <script>
@@ -19,21 +19,11 @@
         headerClass[i].classList.add('active');
       }
     }
-    //ajax
-    $.ajax({
-      async: true,
-      // POST通信
-      type: 'POST',
-      // ここでデータの受信先URLを指定します。
-      url: 'Login.php',
-      dataType: 'json',
-    })
-      .done(function(data) {
-        console.log(data.idname);
-      })
-      .fail(function(data) {
-        console.log(data.idname);
-        console.log('失敗');
+      $.getJSON("data.json", function onLoad(data){
+        target = document.getElementById("Sign");
+        if(data){
+          target.innerHTML = data;
+        }
       });
   </script>
 </div>
