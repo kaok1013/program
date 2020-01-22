@@ -66,8 +66,6 @@ if (isset($_POST["signUp"])) {
     <body>
         <h1>新規登録画面</h1>
         <form id="loginForm" name="loginForm" action="" method="POST">
-            
-            
                 <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
                 <div><font color="#ffff00"><?php echo htmlspecialchars($signUpMessage, ENT_QUOTES); ?></font></div>
                 <label for="username"></label><input type="text" id="username" name="username" placeholder="ユーザー名を入力" value="<?php if (!empty($_POST["username"])) {echo htmlspecialchars($_POST["username"], ENT_QUOTES);} ?>">
@@ -77,7 +75,6 @@ if (isset($_POST["signUp"])) {
                 <label for="password2"></label><input type="password" id="password2" name="password2" value="" placeholder="再度パスワードを入力">
                 <br>
                 <input type="submit" id="signUp" name="signUp" value="登録" class="btn btn-primary btn-block btn-large">
-            
         </form>
         <br>
         <form action="Login.php">
