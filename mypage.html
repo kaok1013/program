@@ -8,6 +8,7 @@
 <html lang="“ja”">
   <head>
     <link rel="stylesheet" href="CSS/header.css" type="text/css" />
+    <link rel="stylesheet" href="CSS/mypage.css" type="text/css" />
     <title>mypage</title>
     <script src="JS/jquery-3.4.1.min.js"></script>
     <script src="JS/mypage.js"></script>
@@ -15,9 +16,26 @@
   <body>
     <div id="header"></div>
 
-    <div>
-      <p id="name"></p>
-      <p>mypageです</p>
+    <div class="profile-card">
+      <div class="profile-card__inner">
+        <div class="profile-thumb">
+          <img src="man.png" alt="アイコン" />
+        </div>
+        <div class="profile-content">
+          <span class="profile-name" id="name"></span>
+          <span class="profile-job">ゲスト</span>
+          <span class="profile-intro">よろしくお願いします。</span>
+          <button
+            type="button"
+            name="name"
+            value="value"
+            class="btn-push"
+            onclick="logout()"
+          >
+            ログアウト
+          </button>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -30,9 +48,5 @@
         });
       }
     </script>
-
-    <button type="button" name="name" value="value" onclick="logout()">
-      ログアウト
-    </button>
   </body>
 </html>
