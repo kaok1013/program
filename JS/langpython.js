@@ -200,19 +200,24 @@ $(function() {
         callback: function(key, opt) {
           svg = $(this);
           // 条件編集のID取得
+          // 条件編集のID取得
           const tableid = opt.$trigger.parent().attr('id');
+          const cpid = opt.$trigger.attr('id');
+          const formid = 'form_' + cpid;
+          const inputid = 'input_' + cpid;
           // 条件入力フォーム
-          $('#input_form').dialog({
+          $('#' + formid).dialog({
             modal: true, // モーダル
-            title: '入力フォーム(仮)',
-            width: 550,
-            heighth: 550,
+            title: '入力フォーム',
+            width: '72vw',
+            heighth: '40vh',
             buttons: {
               ok: {
                 text: '確認',
                 id: 'okbtnid',
                 click: function(event, ui) {
-                  const conditions = document.forms.input_form.input1.value;
+                  const conditions = document.forms[formid][inputid].value;
+                  document[formid].reset();
                   const rend = 15; // 行
                   const cend = 5; // 列
                   for (let r = 0; r < rend; r++) {
