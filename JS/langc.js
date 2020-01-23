@@ -207,8 +207,8 @@ $(function() {
           $('#input_form').dialog({
             modal: true, // モーダル
             title: '入力フォーム',
-            width: '65vw',
-            heighth: '40vh',
+            width: 550,
+            heighth: 550,
             buttons: {
               ok: {
                 text: '確認',
