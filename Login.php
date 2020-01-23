@@ -51,9 +51,12 @@ if (isset($_POST["login"])) {
                     $sendname = $row['name'];
                     
                     header("Location: rakurakupg.html");  // メイン画面へ遷移
-                    $jsonUrl = "data.json";
-                    $jsonData = json_encode($sendname);
-                    file_put_contents($jsonUrl, $jsonData);
+
+                    $file = fopen("data.txt","w");
+
+                    fwrite($file, $sendname);
+
+                    fclose($file);
 
                     exit();  // 処理終了
                 } else {
