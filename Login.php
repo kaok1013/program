@@ -48,9 +48,13 @@ if (isset($_POST["login"])) {
                         $row['name'];  // ユーザー名
                     }
                     $_SESSION["NAME"] = $row['name'];
-
+                    $sendname = $row['name'];
                     
-                    header("Location: Main.php");  // メイン画面へ遷移
+                    header("Location: rakurakupg.html");  // メイン画面へ遷移
+                    $jsonUrl = "data.json";
+                    $jsonData = json_encode($sendname);
+                    file_put_contents($jsonUrl, $jsonData);
+
                     exit();  // 処理終了
                 } else {
                     // 認証失敗
@@ -72,6 +76,7 @@ if (isset($_POST["login"])) {
 ?>
 
 <link rel="stylesheet" href="Login.css"  />
+<script src="JS/jquery-3.4.1.min.js"></script>
 
 <div class="login">
     <h1>サインイン</h1>

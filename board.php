@@ -63,8 +63,8 @@ if( $file_handle = fopen( FILENAME,'r') ) {
 <link rel="stylesheet" type="text/css" href="CSS/board.css">
 <link rel="stylesheet" href="CSS/header.css" type="text/css" />
 <title>掲示板</title>
-<script src="Javascript/jquery-3.4.1.min.js"></script>
-<script src="Javascript/rakurakupg.js"></script>
+<script src="JS/jquery-3.4.1.min.js"></script>
+<script src="JS/rakurakupg.js"></script>
 </head>
 <div id="header"></div>
 

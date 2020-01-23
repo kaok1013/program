@@ -53,7 +53,7 @@ $(function() {
           string: conlist,
         },
         // ここでデータの送信先URLを指定します。
-        url: 'New_Conversion.php',
+        url: 'P_Conversion.php',
       }).done(function(response) {
         $('#pro').html(response);
       });
@@ -232,7 +232,7 @@ $(function() {
                       string: conlist,
                     },
                     // ここでデータの送信先URLを指定します。
-                    url: 'New_Conversion.php',
+                    url: 'P_Conversion.php',
                   }).done(function(response) {
                     $('#pro').html(response);
                   });
@@ -284,7 +284,7 @@ $(function() {
                 string: conlist,
               },
               // ここでデータの送信先URLを指定します。
-              url: 'New_Conversion.php',
+              url: 'P_Conversion.php',
             }).done(function(response) {
               $('#pro').html(response);
             });

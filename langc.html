@@ -19,24 +19,28 @@
       href="jQuery-contextMenu/dist/jquery.contextMenu.min.css"
     />
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css" />
-    <link rel="stylesheet" href="CSS/introjs.min.css" />
+    <link rel="stylesheet" href="CSS/introjs.min.css" type="text/css" />
     <link rel="stylesheet" href="CSS/langc.css" type="text/css" />
     <link rel="stylesheet" href="CSS/header.css" type="text/css" />
-    <script src="Javascript/jquery-3.4.1.min.js"></script>
-    <script src="Javascript/jquery-ui.js"></script>
+    <script src="JS/jquery-3.4.1.min.js"></script>
+    <script src="JS/jquery-ui.js"></script>
     <script src="jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
     <script src="jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
     <script src="leader-line/leader-line.min.js"></script>
-    <script src="Javascript/anim-event.min.js"></script>
-    <script src="Javascript/intro.min.js"></script>
-    <script src="Javascript/langc.js"></script>
-    <!-- Intro.js - Copyright (C) 2012-2017 Afshin Mehrabani (afshin.meh@gmail.com) -->
+    <script src="JS/anim-event.min.js"></script>
+    <script src="JS/intro.min.js"></script>
+    <script src="JS/langc.js"></script>
+    <!-- Intro.js - JS/license.md -->
     <title>C言語</title>
   </head>
 
   <body>
     <div id="header"></div>
-    <div class="all">
+    <div
+      class="all"
+      data-intro="一つの枠内には一つの記号しか置けません.さあ,作ってみましょう!"
+      data-step="5"
+    >
       <div
         class="flowchart side2"
         id="flowid"
@@ -44,12 +48,7 @@
         data-step="1"
       >
         <main>
-          <div
-            class="side"
-            id="tableid"
-            data-intro="ここに置きます"
-            data-step="3"
-          >
+          <div class="side" id="tableid">
             <div id="wrapper"></div>
           </div>
 
@@ -348,9 +347,15 @@
         data-step="4"
       ></div>
     </div>
-    <form id="input_form" style="display:none;">
+    <form id="input_form" style="display:none;" name="inputform">
       <p>条件</p>
-      <input type="text" id="input1" size="50" maxlength="50" />
+      <input
+        placeholder="入力例: i == 0 "
+        type="text"
+        id="input1"
+        size="50"
+        maxlength="50"
+      />
     </form>
   </body>
 </html>

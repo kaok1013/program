@@ -22,6 +22,8 @@ $(function() {
     }
   }
   $('#tableid').append(tableJQ);
+  $('#table0_0').attr('data-intro', 'ここに置きます');
+  $('#table0_0').attr('data-step', '3');
 });
 $(function() {
   // ソート
@@ -53,7 +55,7 @@ $(function() {
           string: conlist,
         },
         // ここでデータの送信先URLを指定します。
-        url: 'PConversion.php',
+        url: 'C_Conversion.php',
       }).done(function(response) {
         $('#pro').html(response);
       });
@@ -204,7 +206,7 @@ $(function() {
           // 条件入力フォーム
           $('#input_form').dialog({
             modal: true, // モーダル
-            title: '入力フォーム(仮)',
+            title: '入力フォーム',
             width: 550,
             heighth: 550,
             buttons: {
@@ -213,6 +215,7 @@ $(function() {
                 id: 'okbtnid',
                 click: function(event, ui) {
                   const conditions = document.forms.input_form.input1.value;
+                  document.inputform.reset();
                   const rend = 15; // 行
                   const cend = 5; // 列
                   for (let r = 0; r < rend; r++) {
@@ -232,7 +235,7 @@ $(function() {
                       string: conlist,
                     },
                     // ここでデータの送信先URLを指定します。
-                    url: 'PConversion.php',
+                    url: 'C_Conversion.php',
                   }).done(function(response) {
                     $('#pro').html(response);
                   });
@@ -284,7 +287,7 @@ $(function() {
                 string: conlist,
               },
               // ここでデータの送信先URLを指定します。
-              url: 'PConversion.php',
+              url: 'C_Conversion.php',
             }).done(function(response) {
               $('#pro').html(response);
             });

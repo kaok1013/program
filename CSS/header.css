@@ -1,32 +1,32 @@
 /*メニューバー*/
-ul {
-  list-style-type: none;
-  margin: 0;
+#header {
+  display: flex;
+  flex-direction: row;
   padding: 0;
-  overflow: hidden;
   background-color: #1b2538;
 }
-.menu {
-  float: left;
-  border-right: 1px solid #bbbbbb;
+#header div:last-of-type {
+  margin-left: auto;
 }
-li:last-child {
-  border-right: none;
+#header div:first-of-type {
+  border-left: none;
 }
-li a {
+#header div a {
   display: block;
+  border-right: solid 1px #bbbbbb;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
-li a:hover:not(.active) {
+#header div a:hover:not(.active) {
   background-color: #a9bce2;
+  color: midnightblue;
 }
-.active {
+#header div a.active {
   background-color: #da3c41;
 }
-
-.right {
-  float: right;
+#header div a.active:hover {
+  background-color: pink;
+  color: midnightblue;
 }
