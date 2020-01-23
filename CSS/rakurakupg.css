@@ -6,6 +6,11 @@
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
 }
+
+* {
+  overflow: hidden;
+}
+
 @keyframes Gradient {
   0% {
     background-position: 0% 50%;

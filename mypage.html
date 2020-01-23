@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta http-equiv="content-type" charset="utf-8" />
+<style>
+  * {
+    margin: 0px;
+  }
+</style>
+<html lang="“ja”">
+  <head>
+    <link rel="stylesheet" href="CSS/header.css" type="text/css" />
+    <title>mypage</title>
+    <script src="JS/jquery-3.4.1.min.js"></script>
+    <script src="JS/mypage.js"></script>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div>
+      <p id="name"></p>
+      <p>mypageです</p>
+    </div>
+
+    <script>
+      function logout() {
+        $.ajax({
+          url: 'jsondel.php',
+          success: function(data) {
+            window.location.href = 'rakurakupg.html';
+          },
+        });
+      }
+    </script>
+
+    <button type="button" name="name" value="value" onclick="logout()">
+      ログアウト
+    </button>
+  </body>
+</html>
