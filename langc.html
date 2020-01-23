@@ -79,7 +79,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="end toolclass"
               title="終了"
@@ -102,7 +101,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="loopStart toolclass"
               title="LoopStart"
@@ -125,7 +123,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="loopEnd toolclass"
               title="LoopEnd"
@@ -148,7 +145,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="decision toolclass"
               title="ifStart"
@@ -171,7 +167,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="elsedecision toolclass"
               title="else"
@@ -194,7 +189,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="elseifdecision toolclass"
               title="elseifStart"
@@ -217,30 +211,6 @@
                 />
               </g>
             </svg>
-
-            <svg
-              class="elseenddecision toolclass"
-              title="分岐終了"
-              id="11"
-              name="num_date"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              version="1.1"
-              viewBox="-0.5 -0.5 1280 720"
-            >
-              <defs />
-              <g>
-                <path
-                  d="M 641 1 L 1281 361 L 641 721 L 1 361 Z"
-                  stroke-width="4"
-                  stroke-miterlimit="10"
-                  pointer-events="none"
-                  fill-opacity="0.85"
-                  stroke-opacity="0.9"
-                />
-              </g>
-            </svg>
-
             <svg
               class="decisionend toolclass"
               title="ifEnd"
@@ -263,7 +233,28 @@
                 />
               </g>
             </svg>
-
+            <svg
+              class="elseenddecision toolclass"
+              title="分岐終了"
+              id="11"
+              name="num_date"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              version="1.1"
+              viewBox="-0.5 -0.5 1280 720"
+            >
+              <defs />
+              <g>
+                <path
+                  d="M 641 1 L 1281 361 L 641 721 L 1 361 Z"
+                  stroke-width="4"
+                  stroke-miterlimit="10"
+                  pointer-events="none"
+                  fill-opacity="0.85"
+                  stroke-opacity="0.9"
+                />
+              </g>
+            </svg>
             <svg
               class="document toolclass"
               title="出力"
@@ -286,7 +277,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="process toolclass"
               title="処理"
@@ -313,7 +303,6 @@
                 />
               </g>
             </svg>
-
             <svg
               class="io toolclass"
               title="入力"
@@ -349,98 +338,84 @@
     <form id="while_form" style="display:none;" name="inputform">
       <p>条件</p>
       <span style="white-space:nowrap;">
-      <label>while(</label>
-      <input
-        placeholder="入力例: i > 10 "
-        type="text"
-        id="input1"
-        size="50"
-        maxlength="50"
-      />
-      <label>){</label>
+        <label>while(</label>
+        <input
+          placeholder="入力例: i > 10 "
+          type="text"
+          id="while_input"
+          size="50"
+          maxlength="50"
+        />
+        <label>){</label>
       </span>
     </form>
     <form id="if_form" style="display:none;" name="inputform">
       <p>条件</p>
       <span style="white-space:nowrap;">
-      <label>if(</label>
-      <input
-        placeholder="入力例: i == 0"
-        type="text"
-        id="input1"
-        size="50"
-        maxlength="50"
-      />
-      <label>){</label>
+        <label>if(</label>
+        <input
+          placeholder="入力例: i == 0"
+          type="text"
+          id="if_input"
+          size="50"
+          maxlength="50"
+        />
+        <label>){</label>
       </span>
     </form>
     <form id="elseif_form" style="display:none;" name="inputform">
       <p>条件</p>
       <span style="white-space:nowrap;">
-      <label>elseif(</label>
-      <input
-        placeholder="入力例: i == 1 "
-        type="text"
-        id="input1"
-        size="50"
-        maxlength="50"
-      />
-      <label>){</label>
-      </span>
-    </form>
-    <form id="else_form" style="display:none;" name="inputform">
-      <p>条件</p>
-      <span style="white-space:nowrap;">
-      <label>else{</label>
-      <input
-        placeholder="入力例: i == 0 "
-        type="text"
-        id="input1"
-        size="50"
-        maxlength="50"
-      />
-      <label>}</label>
+        <label>elseif(</label>
+        <input
+          placeholder="入力例: i == 1 "
+          type="text"
+          id="elseif_input"
+          size="50"
+          maxlength="50"
+        />
+        <label>){</label>
       </span>
     </form>
     <form id="printf_form" style="display:none;" name="inputform">
       <p>条件</p>
       <span style="white-space:nowrap;">
-      <label>printf(</label>
-      <input
-        placeholder="入力例: &quot;Hello World&quot; "
-        type="text"
-        id="input1"
-        size="50"
-        maxlength="50"
-      />
-      <label>);</label>
+        <label>printf(</label>
+        <input
+          placeholder='入力例: "Hello World" '
+          type="text"
+          id="printf_input"
+          size="50"
+          maxlength="50"
+        />
+        <label>);</label>
       </span>
     </form>
     <form id="process_form" style="display:none;" name="inputform">
       <p>条件</p>
       <span style="white-space:nowrap;">
-      <input
-        placeholder="入力例: a = b + C "
-        type="text"
-        id="input1"
-        size="50"
-        maxlength="50"
-      />
-      <label>;</label>
+        <input
+          placeholder="入力例: a = b + C "
+          type="text"
+          id="process_input"
+          size="50"
+          maxlength="50"
+        />
+        <label>;</label>
       </span>
     </form>
     <form id="io_form" style="display:none;" name="inputform">
       <p>条件</p>
       <span style="white-space:nowrap;">
-      <label>scanf(</label>
-      <input
-        placeholder="入力例: i = 0 "
-        type="text"
-        id="input1"
-        size="50"
-        maxlength="50"
-      />
-      <label>);</label>
+        <label>scanf(</label>
+        <input
+          placeholder="入力例: i = 0 "
+          type="text"
+          id="io_input"
+          size="50"
+          maxlength="50"
+        />
+        <label>);</label>
       </span>
     </form>
   </body>
