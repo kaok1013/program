@@ -48,6 +48,8 @@ if (isset($_POST["login"])) {
                         $row['name'];  // ユーザー名
                     }
                     $_SESSION["NAME"] = $row['name'];
+
+                    
                     header("Location: Main.php");  // メイン画面へ遷移
                     exit();  // 処理終了
                 } else {
