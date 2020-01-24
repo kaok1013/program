@@ -2,6 +2,7 @@
 $(function header() {
   $('#header').load('header.html');
   $('#Forms').load('forms.html');
+  $('#SVGs').load('SVG.html');
 });
 
 /* eslint-disable linebreak-style */
@@ -166,7 +167,7 @@ $(function() {
   });
 
   // ドラッグ
-  $('#sort').sortable({
+  $('#SVGs').sortable({
     connectWith: '.table',
     containment: 'body',
     helper: 'clone',
