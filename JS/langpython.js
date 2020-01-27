@@ -22,6 +22,8 @@ $(function() {
     }
   }
   $('#tableid').append(tableJQ);
+  $('#table0_0').attr('data-intro', 'ここに置きます');
+  $('#table0_0').attr('data-step', '3');
 });
 $(function() {
   // ソート
@@ -178,14 +180,35 @@ $(function() {
     },
     remove: function(event, ui) {
       subtitle = $(ui.item).attr('title');
-      if (before.length) before.after(clone);
-      else {
+      if (before.length) {
+        before.after(clone);
+      } else {
         parent.prepend(clone);
       }
       ui.item.attr('id', newItem);
       ui.item.addClass('context-menu-one');
       ui.item.addClass('lead-line-list');
-      ui.item.attr('title', '条件式が入力されていません。');
+      if (ui.item.attr('id') == 1) {
+        ui.item.attr('title', 'フローチャートの開始');
+      } else if (ui.item.attr('id') == 2) {
+        ui.item.attr('title', 'フローチャートの終了');
+      } else if (ui.item.attr('id') == 3) {
+        ui.item.attr('title', '処理内容を入力してください');
+      } else if (ui.item.attr('id') == 4) {
+        ui.item.attr('title', '継続条件を入力してください');
+      } else if (ui.item.attr('id') == 5) {
+        ui.item.attr('title', '継続処理の終端');
+      } else if (ui.item.attr('id') == 8) {
+        ui.item.attr('title', '条件式を入力してください');
+      } else if (ui.item.attr('id') == 9) {
+        ui.item.attr('title', '条件式を入力してください');
+      } else if (ui.item.attr('id') == 10) {
+        ui.item.attr('title', '各分岐先の終端');
+      } else if (ui.item.attr('id') == 11) {
+        ui.item.attr('title', '大元の条件分岐の終端');
+      } else if (ui.item.attr('id') == 15) {
+        ui.item.attr('title', 'ifの条件式が偽');
+      }
     },
   });
 });
@@ -199,7 +222,6 @@ $(function() {
         icon: 'edit',
         callback: function(key, opt) {
           svg = $(this);
-          // 条件編集のID取得
           // 条件編集のID取得
           const tableid = opt.$trigger.parent().attr('id');
           const cpid = opt.$trigger.attr('id');

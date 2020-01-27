@@ -190,7 +190,6 @@ $(function() {
       ui.item.attr('id', newItem);
       ui.item.addClass('context-menu-one');
       ui.item.addClass('lead-line-list');
-      console.log(ui.item.attr('id'));
       if (ui.item.attr('id') == 1) {
         ui.item.attr('title', 'フローチャートの開始');
       } else if (ui.item.attr('id') == 2) {
