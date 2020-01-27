@@ -1,6 +1,8 @@
 /* 共通部分のHTMLファイルの読み込み */
 $(function header() {
   $('#header').load('header.html');
+  $('#Forms').load('forms.html');
+  $('#SVGs').load('SVG.html');
 });
 
 /* eslint-disable linebreak-style */
@@ -22,6 +24,8 @@ $(function() {
     }
   }
   $('#tableid').append(tableJQ);
+  $('#table0_0').attr('data-intro', 'ここに置きます');
+  $('#table0_0').attr('data-step', '3');
 });
 $(function() {
   // ソート
@@ -163,7 +167,7 @@ $(function() {
   });
 
   // ドラッグ
-  $('#sort').sortable({
+  $('#SVGs').sortable({
     connectWith: '.table',
     containment: 'body',
     helper: 'clone',
