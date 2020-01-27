@@ -40,7 +40,7 @@ if (isset($_POST["signUp"])) {
             $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT)));  // パスワードのハッシュ化を行う（今回は文字列のみなのでbindValue(変数の内容が変わらない)を使用せず、直接excuteに渡しても問題ない）
             $userid = $pdo->lastinsertid();  // 登録した(DB側でauto_incrementした)IDを$useridに入れる
 
-            header("Location: rakurakupg.html");  // メイン画面へ遷移
+            header("Location: index.html");  // メイン画面へ遷移
             exit();  // 処理終了
             
         } catch (PDOException $e) {

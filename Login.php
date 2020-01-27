@@ -50,7 +50,7 @@ if (isset($_POST["login"])) {
                     $_SESSION["NAME"] = $row['name'];
                     $sendname = $row['name'];
                     
-                    header("Location: rakurakupg.html");  // メイン画面へ遷移
+                    header("Location: index.html");  // メイン画面へ遷移
 
                     $file = fopen("data.txt","w");
 
@@ -95,7 +95,7 @@ if (isset($_POST["login"])) {
         <input type="submit" value="新規登録" class="btn btn-primary btn-block btn-large"></>
             
     </form>
-        <form action="rakurakupg.html">
+        <form action="index.html">
         <!-- ここは適当に作ってます>
             actionには登録しない場合のページを入れる
         <!-->
