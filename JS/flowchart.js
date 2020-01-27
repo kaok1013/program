@@ -27,6 +27,37 @@ $(function() {
   $('#table0_0').attr('data-intro', 'ここに置きます');
   $('#table0_0').attr('data-step', '3');
 });
+
+// 言語によってコンバージョンを変える関数
+function convert(Selecting) {
+  if (Selecting == 'C') {
+    $.ajax({
+      // POST通信
+      type: 'POST',
+      data: {
+        module: sortitem,
+        string: conlist,
+      },
+      // ここでデータの送信先URLを指定します。
+      url: 'C_Conversion.php',
+    }).done(function(response) {
+      $('#pro').html(response);
+    });
+  } else if (Selecting == 'Python') {
+    $.ajax({
+      // POST通信
+      type: 'POST',
+      data: {
+        module: sortitem,
+        string: conlist,
+      },
+      // ここでデータの送信先URLを指定します。
+      url: 'P_Conversion.php',
+    }).done(function(response) {
+      $('#pro').html(response);
+    });
+  }
+}
 $(function() {
   // ソート
   let subcon = null;
@@ -38,6 +69,7 @@ $(function() {
     update: function() {
       const rend = 15; // 行
       const cend = 5; // 列
+      const Selecting = $('option:selected').val();
       for (let r = 0; r < rend; r++) {
         for (let c = 0; c < cend; c++) {
           const table = 'table' + r + '_' + c;
@@ -49,19 +81,11 @@ $(function() {
           }
         }
       }
-      $.ajax({
-        // POST通信
-        type: 'POST',
-        data: {
-          module: sortitem,
-          string: conlist,
-        },
-        // ここでデータの送信先URLを指定します。
-        url: 'C_Conversion.php',
-      }).done(function(response) {
-        $('#pro').html(response);
+      convert(Selecting);
+      $('.LangSelect').change(function() {
+        const Selecting = $('option:selected').val();
+        convert(Selecting);
       });
-
       // 線を引く
       const leadlist = new Array(15)
         .fill(null)
@@ -244,6 +268,7 @@ $(function() {
                   document[formid].reset();
                   const rend = 15; // 行
                   const cend = 5; // 列
+                  const Selecting = $('option:selected').val();
                   for (let r = 0; r < rend; r++) {
                     for (let c = 0; c < cend; c++) {
                       ret = 'table' + r + '_' + c;
@@ -253,18 +278,7 @@ $(function() {
                       }
                     }
                   }
-                  $.ajax({
-                    // POST通信
-                    type: 'POST',
-                    data: {
-                      module: sortitem,
-                      string: conlist,
-                    },
-                    // ここでデータの送信先URLを指定します。
-                    url: 'C_Conversion.php',
-                  }).done(function(response) {
-                    $('#pro').html(response);
-                  });
+                  convert(Selecting);
                   $(this).dialog('close');
                 },
               },
@@ -305,19 +319,8 @@ $(function() {
                 }
               }
             }
-            $.ajax({
-              // POST通信
-              type: 'POST',
-              data: {
-                module: sortitem,
-                string: conlist,
-              },
-              // ここでデータの送信先URLを指定します。
-              url: 'C_Conversion.php',
-            }).done(function(response) {
-              $('#pro').html(response);
-            });
-
+            const Selecting = $('option:selected').val();
+            convert(Selecting);
             // 線を引く
             const leadlist = new Array(15)
               .fill(null)

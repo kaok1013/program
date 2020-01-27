@@ -20,7 +20,7 @@
     />
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css" />
     <link rel="stylesheet" href="CSS/introjs.min.css" type="text/css" />
-    <link rel="stylesheet" href="CSS/langc.css" type="text/css" />
+    <link rel="stylesheet" href="CSS/flowchart.css" type="text/css" />
     <link rel="stylesheet" href="CSS/header.css" type="text/css" />
     <script src="JS/jquery-3.4.1.min.js"></script>
     <script src="JS/jquery-ui.js"></script>
@@ -29,16 +29,16 @@
     <script src="leader-line/leader-line.min.js"></script>
     <script src="JS/anim-event.min.js"></script>
     <script src="JS/intro.min.js"></script>
-    <script src="JS/langpython.js"></script>
-    <title>Python</title>
+    <script src="JS/flowchart.js"></script>
+    <!-- Intro.js - JS/license.md -->
+    <title>C言語</title>
   </head>
-
   <body>
     <div id="header"></div>
     <div
       class="all"
       data-intro="一つの枠内には一つの記号しか置けません.さあ,作ってみましょう!"
-      data-step="5"
+      data-step="6"
     >
       <div
         class="flowchart side2"
@@ -47,16 +47,27 @@
         data-step="1"
       >
         <main>
-          <div class="side" id="tableid"></div>
+          <div class="side" id="tableid">
+            <div id="wrapper"></div>
+          </div>
           <div class="side dragArea" id="SVGs"></div>
         </main>
       </div>
       <div
-        class="program side2"
-        id="pro"
+        class="side2 LangSelect"
         data-intro="すると,ここに置いた記号に合わせたコードが表示されます"
         data-step="4"
-      ></div>
+      >
+        <select
+          class="extraction"
+          data-intro="ここで変換する言語を変更できます"
+          data-step="5"
+        >
+          <option value="C">C</option>
+          <option value="Python">Python</option>
+        </select>
+        <div class="program" id="pro"></div>
+      </div>
     </div>
     <div id="Forms"></div>
   </body>

@@ -6,7 +6,6 @@ div.flowchart {
 }
 div.program {
   text-align: left;
-  background-color: rgb(55, 61, 66);
   color: white;
   flex-basis: 25rem;
 }
@@ -21,19 +20,23 @@ main {
   display: flex;
   justify-content: space-between;
 }
-.side::-webkit-scrollbar {
+.side::-webkit-scrollbar,
+.side2::-webkit-scrollbar {
   width: 9px;
 }
-.side::-webkit-scrollbar-track {
+.side::-webkit-scrollbar-track,
+.side2::-webkit-scrollbar-track {
   background: auto;
   border: none;
   border-radius: 10px;
 }
-.side::-webkit-scrollbar-thumb {
+.side::-webkit-scrollbar-thumb,
+.side2::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
-.side::-webkit-scrollbar-thumb:hover {
+.side::-webkit-scrollbar-thumb:hover,
+.side2::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 table {
@@ -53,6 +56,8 @@ td {
   justify-content: space-evenly;
 }
 .side2 {
+  background-color: rgb(55, 61, 66);
+  color: white;
   align-items: stretch;
   overflow: auto;
 }
@@ -73,7 +78,9 @@ td {
   justify-content: space-evenly;
   background-color: cornflowerblue;
 }
-
+body {
+  overflow: hidden;
+}
 .side:nth-child(1) > table > tbody > tr > td {
   background-color: dodgerblue;
   align-items: center;
