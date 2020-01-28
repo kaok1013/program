@@ -233,12 +233,12 @@ function Conversion($count, $flag, $Array_module, $Array_string){      //変換�
                 print('<br />');
                 break;
 
-            case 15:
+            case 15:	    //else
                 for ($j = $count ; $j > 0 ; $j--){
                     print($tab);
                 }
                 $count++;
-                print("else:".'<br />');
+                print("else:<br>");
                 break; 
 
             default :
